@@ -194,6 +194,19 @@ def _write_run_dir(out_dir: Path, files: dict[str, str]) -> None:
         (out_dir / name).write_text(content, encoding="utf-8", newline="\n")
 
 
+def _write_html_view(out_dir: Path, *, enabled: bool) -> Path | None:
+    """可选：把已有产物渲成单文件 report.html（零依赖只读投影，不新增数据）。"""
+    if not enabled:
+        return None
+    from .report_html import render_run_dir_html
+
+    target = out_dir / "report.html"
+    target.write_text(
+        render_run_dir_html(out_dir), encoding="utf-8", newline="\n"
+    )
+    return target
+
+
 def _write_report_files(out_dir: Path, report_dict: dict[str, Any]) -> None:
     _write_run_dir(
         out_dir,
@@ -245,7 +258,12 @@ def run_replay(args: argparse.Namespace) -> int:
         },
     )
     print(f"replay 完成：report_id={report.report_id} integrity={report.integrity.passed}")
-    print(f"产物目录: {out_dir.resolve()}（report.md / report.json / run_record.json）")
+    html_path = _write_html_view(out_dir, enabled=bool(getattr(args, "html", False)))
+    print(
+        f"产物目录: {out_dir.resolve()}（report.md / report.json"
+        + (" / report.html" if html_path else " / run_record.json")
+        + "）"
+    )
     return EXIT_OK
 
 
@@ -471,8 +489,10 @@ def run_orchestration_mode(args: argparse.Namespace, *, live: bool) -> int:
     )
     if result.final_report is not None:
         print(f"final_report_id={result.final_report.get('final_report_id', '')}")
+    html_path = _write_html_view(out_dir, enabled=bool(getattr(args, "html", False)))
     print(f"产物目录: {out_dir.resolve()}（report.md / report.json / run_record.json"
-          + (" / sources.json" if live else "") + "）")
+          + (" / sources.json" if live else "")
+          + (" / report.html" if html_path else "") + "）")
     return EXIT_OK if result.outcome == "completed" else EXIT_RUN_FAILED
 
 
@@ -583,6 +603,11 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--goal", required=True, help="研究目标（一句话）")
         p.add_argument("--out", required=True, help="运行产物目录")
         p.add_argument("--candidates", default="", help="逗号分隔的候选标识（缺省用快照集全部候选）")
+        p.add_argument(
+            "--html",
+            action="store_true",
+            help="额外产出单文件 report.html（已有产物的只读投影，零第三方依赖）",
+        )
 
     replay = sub.add_parser("replay", help="本地冻结快照 → 确定性报告（零网络）")
     add_common(replay)

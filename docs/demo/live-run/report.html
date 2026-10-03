@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgentBoard 运行报告</title>
+<style>
+:root{--bg:#14161a;--card:#1c1f26;--line:#2e3239;--fg:#e6e8ec;--muted:#9aa1ad;
+--ok:#3fb950;--bad:#f85149;--warn:#d29922;--accent:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;padding:32px 20px;background:var(--bg);color:var(--fg);
+font:14px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+h1{font-size:19px;font-weight:600;margin:0}
+h2{font-size:16px;font-weight:600;margin:0 0 6px}
+h3{font-size:14px;font-weight:600;margin:0 0 4px}
+h4{font-size:13px;font-weight:600;margin:20px 0 8px;color:var(--muted)}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;
+background:#11141a;padding:1px 5px;border-radius:4px}
+.row{display:flex;align-items:center;gap:10px}
+.wrap-row,.row.wrap{flex-wrap:wrap}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:18px 0 0}
+.kv>div{background:#11141a;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+dt{font-size:11px;color:var(--muted);margin-bottom:3px}
+dd{margin:0;font-size:13px;word-break:break-all}
+.pill{font-size:11px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.pill.ok{color:var(--ok);border-color:#1d4429}
+.pill.bad{color:var(--bad);border-color:#5c2220}
+.pill.warn{color:var(--warn);border-color:#4a3a12}
+.muted{color:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin:10px 0 0}
+.bad-text{color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;color:var(--muted);font-weight:500}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+.digest{color:var(--muted)}
+.timeline{list-style:none;margin:12px 0 0;padding:0}
+.step{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none;margin-top:7px}
+.step.ok .dot{background:var(--ok)}.step.bad .dot{background:var(--bad)}
+.step.warn .dot{background:var(--warn)}
+.why{font-size:12px;color:var(--muted);margin-top:3px;word-break:break-word}
+.task{background:#11141a;border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-top:10px}
+.report+.report{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.findings{margin-top:8px}
+.finding{background:#11141a;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px}
+.finding summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.finding .val{color:var(--accent);font-weight:600}
+.finding .claim{color:var(--muted);font-size:12px}
+.finding.unsupported{opacity:.75}
+blockquote{margin:10px 0 0;padding:10px 12px;background:#0d1015;border-left:3px solid var(--line);
+border-radius:0 6px 6px 0;white-space:pre-wrap;word-break:break-word;font-size:12px;max-height:260px;overflow:auto}
+.meta{font-size:11px;color:var(--muted);margin-top:8px;word-break:break-all}
+.risks{margin:8px 0 0;padding-left:18px;font-size:13px}
+.risks li{margin-bottom:6px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:8px 0 24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+
+<section class="card head">
+  <div class="row">
+    <h1>AgentBoard 运行报告</h1>
+    <span class="pill ok">completed</span>
+  </div>
+  <dl class="kv">
+    <div><dt>run_id</dt><dd><code>ma_ccab32b3023b1c7e</code></dd></div>
+    <div><dt>模式</dt><dd>live</dd></div>
+    <div><dt>完整性 I1-I9</dt><dd class="ok">通过（9 项检查）</dd></div>
+    <div><dt>决策机制</dt><dd><code>orchestrator.v1:cli.v1:structured-plan</code></dd></div>
+  </dl>
+  <div class="row wrap">verdict：<span class="pill ok">verify_report: passed</span></div>
+  <p class="note">本页是已有产物的只读投影，不重算分数、不重验证据、不提升信任等级。
+  live 采集的材料按 <code>authored_summary</code> 信任层处理，
+  <strong>不会自动升格为 research_grade</strong>，需人工复核后才能升格。</p>
+</section>
+
+
+<section class="card">
+  <h2>来源审计（固定 commit 原文）</h2>
+  <p class="note">检索摘要不算证据。每件来源都取自 GitHub contents API 的
+  <strong>固定 commit 原文</strong>，重新取回同一 URL 重算 SHA-256 即可重验。</p>
+  <table>
+    <thead><tr><th>候选</th><th>仓库</th><th>路径</th><th>commit</th><th>内容 SHA-256</th></tr></thead>
+    <tbody><tr>
+      <td><code>pgvector</code></td>
+      <td><code>pgvector/pgvector</code></td>
+      <td><code>README.md</code></td>
+      <td><a href="https://github.com/pgvector/pgvector/blob/7db2345ed99bc77bf33cbdc8b12bd1973210dc81/README.md" target="_blank" rel="noopener noreferrer">7db2345ed99b</a></td>
+      <td><code class="digest">54cb3a5f43443084…</code></td>
+    </tr><tr>
+      <td><code>qdrant_local</code></td>
+      <td><code>qdrant/qdrant</code></td>
+      <td><code>README.md</code></td>
+      <td><a href="https://github.com/qdrant/qdrant/blob/6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de/README.md" target="_blank" rel="noopener noreferrer">6ab21cac18eb</a></td>
+      <td><code class="digest">f1455d12252bf402…</code></td>
+    </tr></tbody>
+  </table>
+</section>
+
+
+<section class="card">
+  <h2>事件时间线（8 条）</h2>
+  <p class="note">调度过程全部落事件：建板 → 派发 → 重试/失败 → 验证 → 合成。
+  失败留在具体任务卡上，不会污染整次运行。</p>
+  <ol class="timeline"><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>board_created</code>
+        <span class="muted"></span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>task_started</code>
+        <span class="muted">research_candidates</span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>task_started</code>
+        <span class="muted">synthesize</span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>task_started</code>
+        <span class="muted">verify_report</span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>task_done</code>
+        <span class="muted">research_candidates</span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>task_done</code>
+        <span class="muted">synthesize</span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>task_done</code>
+        <span class="muted">verify_report</span>
+        
+      </div>
+    </li><li class="step muted">
+      <span class="dot"></span>
+      <div>
+        <code>verifier_passed</code>
+        <span class="muted">verify_report</span>
+        
+      </div>
+    </li></ol>
+</section>
+
+
+<section class="card">
+  <h2>任务板（3 张卡）</h2>
+  <p class="note">每张卡是一个独立可重试单元。角色图在<b>计划层</b> fail-closed 校验——
+  synthesizer 越过 verifier 的计划在派发前就被拒绝。</p>
+  <div class="task">
+      <div class="row">
+        <code>research_candidates</code>
+        <span class="pill ok">done</span>
+        <span class="muted">尝试 1 次</span>
+      </div>
+      
+    </div><div class="task">
+      <div class="row">
+        <code>synthesize</code>
+        <span class="pill ok">done</span>
+        <span class="muted">尝试 1 次</span>
+      </div>
+      
+    </div><div class="task">
+      <div class="row">
+        <code>verify_report</code>
+        <span class="pill ok">done</span>
+        <span class="muted">尝试 1 次</span>
+      </div>
+      
+    </div>
+</section>
+
+
+<section class="card">
+  <h2>研究报告（1 份，仅汇总验证通过的结论）</h2>
+  
+<article class="report">
+  <h3>report_id <code>rp_4b666803a174656e</code></h3>
+  <h4>推荐排名（打分由既有 scoring 模块计算，本页只展示）</h4>
+  <table>
+    <thead><tr><th>排名</th><th>候选</th><th>得分</th><th>依据</th></tr></thead>
+    <tbody><tr>
+      <td>1</td>
+      <td><code>pgvector</code></td>
+      <td class="num">0.5000</td>
+      <td>pgvector：综合效用 0.500（排名 1）；达标维度 5/6；可信证据支撑 5 条；缺失维度：query_latency</td>
+    </tr><tr>
+      <td>2</td>
+      <td><code>qdrant_local</code></td>
+      <td class="num">0.4500</td>
+      <td>qdrant_local：综合效用 0.450（排名 2）；达标维度 4/6；可信证据支撑 4 条；缺失维度：query_latency, scale_ceiling</td>
+    </tr></tbody>
+  </table>
+  <h4>完整性校验</h4>
+  <table class="compact">
+    <thead><tr><th>检查</th><th>结果</th><th>说明</th></tr></thead>
+    <tbody><tr>
+      <td><code>I1</code></td>
+      <td class="ok">通过</td>
+      <td>2 个 evidence_id 各自对应唯一内容</td>
+    </tr><tr>
+      <td><code>I2</code></td>
+      <td class="ok">通过</td>
+      <td>2 条索引项全部可解析</td>
+    </tr><tr>
+      <td><code>I3</code></td>
+      <td class="ok">通过</td>
+      <td>所有 supported finding 都有非 legacy 证据</td>
+    </tr><tr>
+      <td><code>I4</code></td>
+      <td class="ok">通过</td>
+      <td>每个候选都有 fixture 证据支撑</td>
+    </tr><tr>
+      <td><code>I5</code></td>
+      <td class="ok">通过</td>
+      <td>2 × 6 组合完整覆盖</td>
+    </tr><tr>
+      <td><code>I6</code></td>
+      <td class="ok">通过</td>
+      <td>2 条推荐的 rank 与 score 单调一致</td>
+    </tr><tr>
+      <td><code>I7</code></td>
+      <td class="ok">通过</td>
+      <td>推荐引用的 finding / risk 全部可解析</td>
+    </tr><tr>
+      <td><code>I8</code></td>
+      <td class="ok">通过</td>
+      <td>维度权重之和为 1.0</td>
+    </tr><tr>
+      <td><code>I9</code></td>
+      <td class="ok">通过</td>
+      <td>证据来源类型：[&#x27;fixture_snapshot&#x27;]</td>
+    </tr></tbody>
+  </table>
+  <h4>结论与证据回链（点摘录可展开原文定位）</h4>
+  <div class="findings">
+<details class="finding">
+  <summary>
+    <code>pgvector / deployment_complexity</code>
+    <span class="val">medium</span>
+    <span class="claim">pgvector installation requires compiling from source or using package managers, with platform-specific steps and tuning options for indexes.</span>
+  </summary>
+  <blockquote># pgvector
+
+Open-source vector similarity search for Postgres
+
+Store your vectors with the rest of your data. Supports:
+
+- exact and approximate nearest neighbor search
+- single-precision, half-precision, binary, and sparse vectors
+- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance
+- any [language](#languages) with a Postgres client
+
+Plus [ACID](http</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">f3c4b25059733644…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>pgvector / ecosystem_maturity</code>
+    <span class="val">mature</span>
+    <span class="claim">pgvector has broad, production-ready support across PostgreSQL versions, multiple installation methods, extensive language bindings, and active mainte…</span>
+  </summary>
+  <blockquote># pgvector
+
+Open-source vector similarity search for Postgres
+
+Store your vectors with the rest of your data. Supports:
+
+- exact and approximate nearest neighbor search
+- single-precision, half-precision, binary, and sparse vectors
+- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance
+- any [language](#languages) with a Postgres client
+
+Plus [ACID](http</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">f3c4b25059733644…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>pgvector / managed_service_needed</code>
+    <span class="val">false</span>
+    <span class="claim">pgvector is a PostgreSQL extension that users install and manage themselves; it does not require or imply a managed service.</span>
+  </summary>
+  <blockquote># pgvector
+
+Open-source vector similarity search for Postgres
+
+Store your vectors with the rest of your data. Supports:
+
+- exact and approximate nearest neighbor search
+- single-precision, half-precision, binary, and sparse vectors
+- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance
+- any [language](#languages) with a Postgres client
+
+Plus [ACID](http</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">f3c4b25059733644…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>pgvector / ops_skill_floor</code>
+    <span class="val">high</span>
+    <span class="claim">pgvector provides robust, production-ready vector search operations with ACID compliance, multiple indexing strategies (HNSW/IVFFlat), and extensive t…</span>
+  </summary>
+  <blockquote># pgvector
+
+Open-source vector similarity search for Postgres
+
+Store your vectors with the rest of your data. Supports:
+
+- exact and approximate nearest neighbor search
+- single-precision, half-precision, binary, and sparse vectors
+- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance
+- any [language](#languages) with a Postgres client
+
+Plus [ACID](http</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">f3c4b25059733644…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+<div class="finding unsupported"><div class="row"><code>pgvector / query_latency</code><span class="pill muted">unsupported</span></div></div>
+<details class="finding">
+  <summary>
+    <code>pgvector / scale_ceiling</code>
+    <span class="val">large</span>
+    <span class="claim">pgvector supports up to 64,000 dimensions via binary vectors and 16,000 dimensions for vector/halfvec/sparsevec types.</span>
+  </summary>
+  <blockquote># pgvector
+
+Open-source vector similarity search for Postgres
+
+Store your vectors with the rest of your data. Supports:
+
+- exact and approximate nearest neighbor search
+- single-precision, half-precision, binary, and sparse vectors
+- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance
+- any [language](#languages) with a Postgres client
+
+Plus [ACID](http</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">f3c4b25059733644…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>qdrant_local / deployment_complexity</code>
+    <span class="val">low</span>
+    <span class="claim">Qdrant can be deployed locally with a single Docker command, requiring minimal setup for basic use.</span>
+  </summary>
+  <blockquote>&lt;p align=&quot;center&quot;&gt;
+  &lt;picture&gt;
+      &lt;source media=&quot;(prefers-color-scheme: dark)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg&quot;&gt;
+      &lt;source media=&quot;(prefers-color-scheme: light)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg&quot;&gt;
+      &lt;img height=&quot;100&quot; alt=&quot;Qdrant&quot; src=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo.svg&quot;&gt;
+  &lt;/picture&gt;
+&lt;/p&gt;</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">0926a191ff1b9672…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>qdrant_local / ecosystem_maturity</code>
+    <span class="val">mature</span>
+    <span class="claim">Qdrant has official and community client libraries for multiple languages, extensive documentation, integrations, cloud offering, active Discord, and …</span>
+  </summary>
+  <blockquote>&lt;p align=&quot;center&quot;&gt;
+  &lt;picture&gt;
+      &lt;source media=&quot;(prefers-color-scheme: dark)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg&quot;&gt;
+      &lt;source media=&quot;(prefers-color-scheme: light)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg&quot;&gt;
+      &lt;img height=&quot;100&quot; alt=&quot;Qdrant&quot; src=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo.svg&quot;&gt;
+  &lt;/picture&gt;
+&lt;/p&gt;</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">0926a191ff1b9672…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>qdrant_local / managed_service_needed</code>
+    <span class="val">false</span>
+    <span class="claim">Qdrant can be run locally via Docker without requiring a managed service.</span>
+  </summary>
+  <blockquote>&lt;p align=&quot;center&quot;&gt;
+  &lt;picture&gt;
+      &lt;source media=&quot;(prefers-color-scheme: dark)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg&quot;&gt;
+      &lt;source media=&quot;(prefers-color-scheme: light)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg&quot;&gt;
+      &lt;img height=&quot;100&quot; alt=&quot;Qdrant&quot; src=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo.svg&quot;&gt;
+  &lt;/picture&gt;
+&lt;/p&gt;</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">0926a191ff1b9672…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+
+<details class="finding">
+  <summary>
+    <code>qdrant_local / ops_skill_floor</code>
+    <span class="val">high</span>
+    <span class="claim">Qdrant is written in Rust, supports distributed deployment, sharding, replication, zero-downtime updates, observability, and production-grade security…</span>
+  </summary>
+  <blockquote>&lt;p align=&quot;center&quot;&gt;
+  &lt;picture&gt;
+      &lt;source media=&quot;(prefers-color-scheme: dark)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg&quot;&gt;
+      &lt;source media=&quot;(prefers-color-scheme: light)&quot; srcset=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg&quot;&gt;
+      &lt;img height=&quot;100&quot; alt=&quot;Qdrant&quot; src=&quot;https://github.com/qdrant/qdrant/raw/master/docs/logo.svg&quot;&gt;
+  &lt;/picture&gt;
+&lt;/p&gt;</blockquote>
+  <div class="meta">
+    locator：<code>/sections/0/text</code> ·
+    digest：<code class="digest">0926a191ff1b9672…</code> ·
+    采集时间：<code>2026-09-26</code>
+    
+  </div>
+</details>
+<div class="finding unsupported"><div class="row"><code>qdrant_local / query_latency</code><span class="pill muted">unsupported</span></div></div><div class="finding unsupported"><div class="row"><code>qdrant_local / scale_ceiling</code><span class="pill muted">unsupported</span></div></div></div>
+  <h4>风险（6 条）</h4><ul class="risks"><li><span class="pill bad">high</span> <code>pgvector</code> pgvector 在权重 0.25 的维度 query_latency 上没有资料依据</li><li><span class="pill bad">high</span> <code>qdrant_local</code> qdrant_local 在权重 0.15 的维度 scale_ceiling 上没有资料依据</li><li><span class="pill bad">high</span> <code>qdrant_local</code> qdrant_local 在权重 0.25 的维度 query_latency 上没有资料依据</li><li><span class="pill muted">medium</span> <code>-</code> 前两名综合效用分差仅 0.0500（阈值 0.05），排名不稳健</li><li><span class="pill muted">medium</span> <code>qdrant_local</code> qdrant_local 的 4 条结论全部出自同一段原文（/sections/0/text），结论独立性不足</li><li><span class="pill muted">medium</span> <code>pgvector</code> pgvector 的 5 条结论全部出自同一段原文（/sections/0/text），结论独立性不足</li></ul>
+  
+<h4>显式 unsupported（材料不足，不推断补齐）</h4>
+<ul class="risks"><li><code>pgvector</code>：query_latency</li><li><code>qdrant_local</code>：query_latency, scale_ceiling</li></ul>
+
+</article>
+
+</section>
+
+
+</div>
+<footer>AgentBoard · 受控研究 Agent · 本页为产物只读投影，结论可信性以 report.json 与来源审计为准</footer>
+</body>
+</html>
