@@ -1,0 +1,17 @@
+{
+  "scenario_id": "ma_retry_exhaustion_blocked",
+  "expect": {
+    "outcome": "blocked",
+    "final_report_present": false,
+    "events_present": [
+      "task_failed",
+      "blocked"
+    ],
+    "events_absent": [
+      "verifier_passed"
+    ],
+    "card_status": {
+      "research_candidates": "failed"
+    }
+  }
+}

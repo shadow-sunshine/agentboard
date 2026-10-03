@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="430" viewBox="0 0 1300 430">
+  <rect width="1300" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 26px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .label{font:700 18px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:15px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:13px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .box{stroke:#98A2B3;stroke-width:1.4;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#D92D20;stroke-width:2;stroke-dasharray:7 7;fill:none}
+    </style>
+  </defs>
+
+  <text class="title" x="48" y="52">业务输入只保留用户目标</text>
+
+  <rect class="box" x="70" y="118" width="260" height="150" fill="#EEF4FF"/>
+  <text class="label" x="102" y="158">materials/product_goal.txt</text>
+  <text class="text" x="102" y="194">杭州三日游团建目标</text>
+  <text class="small" x="102" y="226">人数、预算、偏好、出发地</text>
+
+  <rect class="box" x="505" y="102" width="285" height="182" fill="#F0FDF4"/>
+  <text class="label" x="540" y="144">ProjectBrief</text>
+  <text class="text" x="540" y="182">text: 原始业务目标</text>
+  <text class="text" x="540" y="214">source: 输入来源</text>
+  <text class="small" x="540" y="250">后续步骤复用同一份输入</text>
+
+  <rect class="box" x="965" y="86" width="255" height="92" fill="#FFF7ED"/>
+  <text class="label" x="996" y="124">主 Agent 规划</text>
+  <text class="small" x="996" y="154">只读取业务目标</text>
+
+  <rect class="box" x="965" y="236" width="255" height="92" fill="#F9F5FF"/>
+  <text class="label" x="996" y="274">完整调度 Loop</text>
+  <text class="small" x="996" y="304">复用同一份 ProjectBrief</text>
+
+  <path class="line" d="M330 194 C405 194 430 193 505 193"/>
+  <path class="line" d="M790 166 C850 145 900 132 965 132"/>
+  <path class="line" d="M790 232 C850 255 900 282 965 282"/>
+
+  <rect x="70" y="344" width="1150" height="58" fill="#FFF5F5" stroke="#FDA29B" rx="10" ry="10"/>
+  <text class="text" x="98" y="370">不写进业务输入：调度策略、上下文隔离规则、执行边界。</text>
+  <text class="small" x="98" y="392">这些规则属于主 Agent / TriggerFlow / ACP 边界，不能混进用户需求。</text>
+  <path class="dash" d="M402 360 C435 340 472 312 520 276"/>
+</svg>

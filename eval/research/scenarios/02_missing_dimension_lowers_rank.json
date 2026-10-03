@@ -1,0 +1,14 @@
+{
+  "scenario_id": "missing_dimension_lowers_rank",
+  "title": "缺失维度导致掉名次",
+  "note": "删掉 pgvector 在 deployment_complexity（权重 0.20）上的声明：缺口必须显式记为 unsupported，分数下降、名次让给 qdrant_local，且报告完整性仍然通过（不静默省略）。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "drop_dimension_declaration",
+    "candidate": "pgvector",
+    "dimension": "deployment_complexity"
+  }
+}

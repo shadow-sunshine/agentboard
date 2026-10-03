@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="720" viewBox="0 0 1500 720">
+  <rect width="1500" height="720" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 28px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .label{font:700 18px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:15px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:14px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .code{font:700 15px Menlo,Consolas,monospace;fill:#1D2939}
+      .box{stroke:#98A2B3;stroke-width:1.5;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#98A2B3;stroke-width:1.8;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <text class="title" x="60" y="56">TriggerFlow 的 chunk / when / execution 结构</text>
+
+  <rect class="box" x="70" y="118" width="330" height="138" fill="#F0FDF4"/>
+  <text class="code" x="102" y="158">@flow.chunk("plan_board")</text>
+  <text class="label" x="102" y="194">主 Agent 建任务板</text>
+  <text class="text" x="102" y="226">业务目标 -> state["board"]</text>
+
+  <rect class="box" x="585" y="118" width="330" height="138" fill="#FFF7ED"/>
+  <text class="code" x="617" y="158">@flow.chunk("dispatch_tasks")</text>
+  <text class="label" x="617" y="194">主 Agent 调度任务</text>
+  <text class="text" x="617" y="226">选 ready 卡片，调用 ACP worker</text>
+
+  <rect class="box" x="1100" y="118" width="330" height="138" fill="#FDF2FA"/>
+  <text class="code" x="1132" y="158">@flow.chunk("synthesize_report")</text>
+  <text class="label" x="1132" y="194">主 Agent 综合报告</text>
+  <text class="text" x="1132" y="226">读取最终任务板，生成交付物</text>
+
+  <path class="line" d="M400 187 L585 187"/>
+  <text class="code" x="428" y="168">when(plan_board).to(...)</text>
+  <path class="line" d="M915 187 L1100 187"/>
+  <text class="code" x="945" y="168">when(dispatch_tasks).to(...)</text>
+
+  <rect class="box" x="70" y="350" width="380" height="148" fill="#EEF4FF"/>
+  <text class="label" x="104" y="386">TriggerFlow state</text>
+  <text class="text" x="104" y="420">board：公共任务板和状态</text>
+  <text class="text" x="104" y="448">worker_inputs / worker_results：复盘记录</text>
+  <text class="text" x="104" y="476">final_report：最终综合结果</text>
+
+  <rect class="box" x="560" y="350" width="380" height="148" fill="#F9F5FF"/>
+  <text class="label" x="594" y="386">ACP 子 Agent 私有执行域</text>
+  <text class="text" x="594" y="420">只接收当前 WorkerTaskInput</text>
+  <text class="text" x="594" y="448">不继承完整主会话</text>
+  <text class="text" x="594" y="476">返回 WorkerResult 给主 Agent</text>
+
+  <rect class="box" x="1050" y="350" width="380" height="148" fill="#F8F9FC"/>
+  <text class="label" x="1084" y="386">runtime stream</text>
+  <text class="text" x="1084" y="420">board_created / task_started</text>
+  <text class="text" x="1084" y="448">worker_delta / task_done</text>
+  <text class="text" x="1084" y="476">dispatch_done / final_report_ready</text>
+
+  <path class="dash" d="M235 256 L235 350"/>
+  <path class="dash" d="M750 256 L750 350"/>
+  <path class="dash" d="M750 498 C750 540 300 540 260 498"/>
+  <path class="line" d="M940 424 L1050 424"/>
+  <text class="small" x="964" y="408">worker_delta</text>
+
+  <rect class="box" x="70" y="592" width="1360" height="76" fill="#F2F4F7"/>
+  <text class="code" x="102" y="624">execution = master_flow.create_execution(auto_close=False)</text>
+  <text class="text" x="102" y="652">async_start(project_brief.text) -> get_async_runtime_stream(timeout=None) -> async_close()</text>
+
+  <path class="dash" d="M260 592 L260 498"/>
+  <path class="dash" d="M1240 592 L1240 498"/>
+</svg>

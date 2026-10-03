@@ -1,0 +1,13 @@
+{
+  "scenario_id": "single_source_risk",
+  "title": "单一证据来源",
+  "note": "把 milvus_standalone 的全部结论塌缩到同一段原文：证据仍可信（I3/I4 通过），但必须触发 R_SINGLE_SOURCE。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "collapse_evidence_to_one_section",
+    "candidate": "milvus_standalone"
+  }
+}

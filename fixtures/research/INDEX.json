@@ -1,0 +1,32 @@
+{
+  "schema": "research.index.v1",
+  "dimension_registry": "dimensions/dimensions.v1.json",
+  "dimension_registry_sha256": "083a165e3ce7f0a622113ee85961ab576eb84489a99a5c678440cf13dd785a70",
+  "note": "候选清单。每个 option 文件的 snapshot_version / captured_at 必须与本表一致，否则加载即报错。",
+  "candidates": [
+    {
+      "candidate_id": "milvus_standalone",
+      "display_name": "Milvus 单机版",
+      "fixture_path": "options/milvus_standalone.json",
+      "snapshot_version": "milvus-notes.2026-09-01",
+      "captured_at": "2026-09-01",
+      "fixture_sha256": "2786efa7c6f7ce4dfb356cfefcdba73f4074be294fb0f71ff24b1232982f742e"
+    },
+    {
+      "candidate_id": "pgvector",
+      "display_name": "pgvector（PostgreSQL 扩展）",
+      "fixture_path": "options/pgvector.json",
+      "snapshot_version": "pgvector-notes.2026-09-01",
+      "captured_at": "2026-09-01",
+      "fixture_sha256": "1d607ef524c53679a7012ccd858246330ee7c0317d00c16688afa1bc11be5638"
+    },
+    {
+      "candidate_id": "qdrant_local",
+      "display_name": "Qdrant 单机部署",
+      "fixture_path": "options/qdrant_local.json",
+      "snapshot_version": "qdrant-notes.2026-09-01",
+      "captured_at": "2026-09-01",
+      "fixture_sha256": "e3909e4dd34a688807dbea1cfcb2c5a6092daaabf5424e06ccfa92111a525cab"
+    }
+  ]
+}

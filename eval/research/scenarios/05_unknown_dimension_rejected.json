@@ -1,0 +1,14 @@
+{
+  "scenario_id": "unknown_dimension_rejected",
+  "title": "未知维度被拒绝",
+  "note": "给 qdrant_local 注入一个注册表里没有的维度：入口预检必须抛 UnknownDimensionError，不允许「忽略未知维度」这种静默兜底。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "add_unknown_dimension",
+    "candidate": "qdrant_local",
+    "dimension": "cost_per_gb"
+  }
+}

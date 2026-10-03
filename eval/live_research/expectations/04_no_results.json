@@ -1,0 +1,11 @@
+{
+  "scenario_id": "no_results",
+  "expect": {
+    "outcome": "failed",
+    "failure_reason": "no_snapshots",
+    "degraded_candidates": [
+      "pgvector",
+      "qdrant_local"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scenario_id": "no_trusted_evidence",
+  "title": "无可信证据（synthetic 占位）",
+  "note": "把 pgvector 的证据全部换成 synthetic_mock：synthetic 不是 legacy，所以 I3 通过；但没有任何 fixture 证据支撑，I4 必须失败。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "replace_evidence_kind",
+    "candidate": "pgvector",
+    "source_type": "synthetic_mock"
+  }
+}

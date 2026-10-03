@@ -1,0 +1,25 @@
+{
+  "note": "digest 为检索层测量；重验=重新取回同固定 commit URL 重算 sha256。",
+  "source_audit": [
+    {
+      "blob_sha": "bcb7edaf91d2bb005675d378bb0ed495cc279c82",
+      "byte_size": 42305,
+      "candidate_id": "pgvector",
+      "commit": "7db2345ed99bc77bf33cbdc8b12bd1973210dc81",
+      "content_sha256": "54cb3a5f4344308476cb2378469ac77d10fbff415d1b5be66608bb386ce8f527",
+      "path": "README.md",
+      "repo": "pgvector/pgvector",
+      "source_url": "https://github.com/pgvector/pgvector/blob/7db2345ed99bc77bf33cbdc8b12bd1973210dc81/README.md"
+    },
+    {
+      "blob_sha": "cf4c1c5213148ed9d6388654f9d3e75b06504bc9",
+      "byte_size": 11560,
+      "candidate_id": "qdrant_local",
+      "commit": "6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de",
+      "content_sha256": "f1455d12252bf40235ad0128d8e98b2cd6d42583e441ac832b01f4daf08df2e4",
+      "path": "README.md",
+      "repo": "qdrant/qdrant",
+      "source_url": "https://github.com/qdrant/qdrant/blob/6ab21cac18ebb6f4ae29102c7f8f5cc11affd5de/README.md"
+    }
+  ]
+}

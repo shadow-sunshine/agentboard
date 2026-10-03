@@ -1,0 +1,27 @@
+{
+  "scenario_id": "default_report",
+  "expect": {
+    "mode": "report",
+    "strict": true,
+    "report_id": "rp_9e0057b9f989020f",
+    "integrity_passed": true,
+    "failed_codes": [],
+    "ranking": [
+      {
+        "rank": 1,
+        "candidate_id": "pgvector",
+        "score": 0.45
+      },
+      {
+        "rank": 2,
+        "candidate_id": "qdrant_local",
+        "score": 0.375
+      },
+      {
+        "rank": 3,
+        "candidate_id": "milvus_standalone",
+        "score": 0.2
+      }
+    ]
+  }
+}

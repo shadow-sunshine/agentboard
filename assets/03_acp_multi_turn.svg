@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="680" viewBox="0 0 1500 680">
+  <rect width="1500" height="680" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 27px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .head{font:700 19px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:16px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:14px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .box{stroke:#98A2B3;stroke-width:1.5;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <text class="title" x="60" y="58">ACP 的位置：连接外部子 Agent，不接管业务编排</text>
+
+  <rect class="box" x="80" y="136" width="350" height="300" fill="#F0FDF4"/>
+  <text class="head" x="116" y="182">TriggerFlow chunk</text>
+  <text class="text" x="116" y="222">读取 board_state</text>
+  <text class="text" x="116" y="258">构造 WorkerTaskInput</text>
+  <text class="text" x="116" y="294">调用 call_worker_agent</text>
+
+  <rect class="box" x="575" y="136" width="360" height="300" fill="#EEF4FF"/>
+  <text class="head" x="612" y="182">ACP 边界函数</text>
+  <text class="text" x="612" y="222">initialize</text>
+  <text class="text" x="612" y="258">new_session</text>
+  <text class="text" x="612" y="294">prompt</text>
+  <text class="text" x="612" y="330">session_update stream</text>
+  <text class="small" x="612" y="382">只收公开文本和 session_id</text>
+
+  <rect class="box" x="1080" y="136" width="340" height="300" fill="#F9F5FF"/>
+  <text class="head" x="1116" y="182">官方子 Agent 连接器</text>
+  <text class="text" x="1116" y="222">Codex ACP Adapter A</text>
+  <text class="text" x="1116" y="258">Codex ACP Adapter B</text>
+  <text class="small" x="1116" y="318">认证、权限、模型额度</text>
+  <text class="small" x="1116" y="346">属于连接器和本机环境</text>
+
+  <path class="line" d="M430 246 L575 246"/>
+  <text class="small" x="468" y="226">私有任务包</text>
+  <path class="line" d="M935 246 L1080 246"/>
+  <text class="small" x="980" y="226">ACP 请求</text>
+  <path class="line" d="M1080 344 L935 344"/>
+  <text class="small" x="978" y="326">流式 update</text>
+  <path class="line" d="M575 360 L430 360"/>
+  <text class="small" x="462" y="342">WorkerResult</text>
+
+  <rect x="90" y="520" width="1320" height="70" fill="#FFF7ED" stroke="#FDB022" rx="10" ry="10"/>
+  <text class="text" x="120" y="550">同一个 session_id 可以多轮追问。</text>
+  <text class="text" x="120" y="576">是否追问、追问什么，仍由主 Agent 根据任务板状态决定。</text>
+</svg>

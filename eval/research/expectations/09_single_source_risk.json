@@ -1,0 +1,49 @@
+{
+  "scenario_id": "single_source_risk",
+  "expect": {
+    "mode": "report",
+    "strict": true,
+    "report_id": "rp_13a9602fbb620559",
+    "integrity_passed": true,
+    "failed_codes": [],
+    "ranking": [
+      {
+        "rank": 1,
+        "candidate_id": "pgvector",
+        "score": 0.8
+      },
+      {
+        "rank": 2,
+        "candidate_id": "qdrant_local",
+        "score": 0.675
+      },
+      {
+        "rank": 3,
+        "candidate_id": "milvus_standalone",
+        "score": 0.5
+      }
+    ],
+    "unsupported": {
+      "milvus_standalone": [
+        "scale_ceiling"
+      ],
+      "qdrant_local": [
+        "managed_service_needed"
+      ]
+    },
+    "risk_rule_ids": [
+      "R_SINGLE_SOURCE",
+      "R_UNSUPPORTED_WEIGHTED"
+    ],
+    "coverage_supported": {
+      "milvus_standalone": 5,
+      "pgvector": 6,
+      "qdrant_local": 5
+    },
+    "trusted_finding_counts": {
+      "milvus_standalone": 5,
+      "pgvector": 6,
+      "qdrant_local": 5
+    }
+  }
+}

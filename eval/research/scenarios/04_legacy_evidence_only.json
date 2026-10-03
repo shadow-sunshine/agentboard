@@ -1,0 +1,14 @@
+{
+  "scenario_id": "legacy_evidence_only",
+  "title": "legacy 证据（有损降级）",
+  "note": "把 pgvector 的证据全部换成 legacy_text：I3（supported 必须至少有一条非 legacy 证据）与 I4 同时失败，且必须触发 R_UNTRUSTED_BACKING。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "replace_evidence_kind",
+    "candidate": "pgvector",
+    "source_type": "legacy_text"
+  }
+}

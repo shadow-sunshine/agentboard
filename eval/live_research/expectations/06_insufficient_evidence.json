@@ -1,0 +1,8 @@
+{
+  "scenario_id": "insufficient_evidence",
+  "expect": {
+    "outcome": "failed",
+    "failure_reason": "assemble_failed:ReportIntegrityError:I4",
+    "degraded_candidates": []
+  }
+}

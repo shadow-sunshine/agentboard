@@ -1,0 +1,66 @@
+{
+  "schema": "research.dimensions.v1",
+  "note": "P1A 只支持 ordinal / boolean 两种量表。utility_map 是唯一的方向来源：utility 越大越符合选型目标。权重必须显式配平到 1.0（不做自动归一化）。",
+  "dimensions": [
+    {
+      "dimension_id": "deployment_complexity",
+      "name": "部署与上线复杂度",
+      "description": "从零到可用需要多少步骤与额外组件；越低越省事。",
+      "weight": 0.2,
+      "scale_kind": "ordinal",
+      "scale_labels": ["low", "medium", "high"],
+      "utility_map": {"low": 1.0, "medium": 0.5, "high": 0.0},
+      "aliases": ["deploy_complexity"]
+    },
+    {
+      "dimension_id": "ops_skill_floor",
+      "name": "运维技能门槛",
+      "description": "日常运维对团队既有技能栈的额外要求；越低越容易维持。",
+      "weight": 0.15,
+      "scale_kind": "ordinal",
+      "scale_labels": ["low", "medium", "high"],
+      "utility_map": {"low": 1.0, "medium": 0.5, "high": 0.0},
+      "aliases": ["ops_effort"]
+    },
+    {
+      "dimension_id": "query_latency",
+      "name": "检索延迟表现",
+      "description": "在预期数据规模下的检索延迟水平；越高越好。",
+      "weight": 0.25,
+      "scale_kind": "ordinal",
+      "scale_labels": ["excellent", "good", "fair"],
+      "utility_map": {"excellent": 1.0, "good": 0.5, "fair": 0.0},
+      "aliases": []
+    },
+    {
+      "dimension_id": "scale_ceiling",
+      "name": "规模上限",
+      "description": "可承载的数据量级与横向扩展能力；越大越好。",
+      "weight": 0.15,
+      "scale_kind": "ordinal",
+      "scale_labels": ["small", "medium", "large"],
+      "utility_map": {"small": 0.0, "medium": 0.5, "large": 1.0},
+      "aliases": []
+    },
+    {
+      "dimension_id": "ecosystem_maturity",
+      "name": "生态与文档成熟度",
+      "description": "文档质量、社区规模与周边工具完备程度；越成熟越好。",
+      "weight": 0.15,
+      "scale_kind": "ordinal",
+      "scale_labels": ["nascent", "growing", "mature"],
+      "utility_map": {"nascent": 0.0, "growing": 0.5, "mature": 1.0},
+      "aliases": []
+    },
+    {
+      "dimension_id": "managed_service_needed",
+      "name": "是否依赖外部托管服务",
+      "description": "是否需要引入外部托管服务；false 表示可完全自托管，对内网部署更友好。",
+      "weight": 0.1,
+      "scale_kind": "boolean",
+      "scale_labels": ["false", "true"],
+      "utility_map": {"false": 1.0, "true": 0.0},
+      "aliases": []
+    }
+  ]
+}

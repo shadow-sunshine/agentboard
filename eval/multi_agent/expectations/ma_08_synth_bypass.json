@@ -1,0 +1,13 @@
+{
+  "scenario_id": "ma_synth_bypass",
+  "expect": {
+    "outcome": "failed",
+    "failure_reason_prefix": "plan_rejected:",
+    "events_present": [
+      "plan_rejected"
+    ],
+    "events_absent": [
+      "task_started"
+    ]
+  }
+}

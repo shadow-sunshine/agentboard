@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="460" viewBox="0 0 1300 460">
+  <rect width="1300" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 26px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .label{font:700 18px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:15px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:13px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .box{stroke:#98A2B3;stroke-width:1.4;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#D92D20;stroke-width:2;stroke-dasharray:7 7;fill:none}
+    </style>
+  </defs>
+
+  <text class="title" x="48" y="52">派发前裁剪上下文</text>
+
+  <rect class="box" x="70" y="98" width="280" height="228" fill="#FFF7ED"/>
+  <text class="label" x="105" y="140">公共任务板</text>
+  <text class="text" x="105" y="176">当前 TaskCard</text>
+  <text class="text" x="105" y="206">已完成上游结果</text>
+  <text class="small" x="105" y="242">还有其它卡片和全局状态</text>
+  <text class="small" x="105" y="272">这些不直接交给子 Agent</text>
+
+  <rect class="box" x="505" y="116" width="260" height="190" fill="#EEF4FF"/>
+  <text class="label" x="540" y="156">build_worker_input</text>
+  <text class="text" x="540" y="194">检查依赖是否完成</text>
+  <text class="text" x="540" y="224">只取显式上游结果</text>
+  <text class="small" x="540" y="260">补 acceptance / forbidden</text>
+
+  <rect class="box" x="920" y="98" width="300" height="228" fill="#F0FDF4"/>
+  <text class="label" x="955" y="140">WorkerTaskInput</text>
+  <text class="text" x="955" y="176">goal + context</text>
+  <text class="text" x="955" y="206">upstream_results</text>
+  <text class="text" x="955" y="236">验收口径和禁止事项</text>
+  <text class="small" x="955" y="272">发送给 Codex worker</text>
+
+  <path class="line" d="M350 212 C412 212 442 212 505 212"/>
+  <path class="line" d="M765 212 C826 212 858 212 920 212"/>
+
+  <rect x="70" y="362" width="1150" height="54" fill="#FFF5F5" stroke="#FDA29B" rx="10" ry="10"/>
+  <text class="text" x="98" y="394">被挡在外面：完整主会话、未完成任务卡、子 Agent 私有过程、本地文件和命令执行权限。</text>
+  <path class="dash" d="M252 318 C402 362 746 362 940 318"/>
+</svg>

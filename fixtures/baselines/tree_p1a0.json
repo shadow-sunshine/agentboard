@@ -1,0 +1,216 @@
+{
+  "tree_schema": "agentboard.tree.v1",
+  "root": ".",
+  "ignore_dirs": [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    ".workbuddy",
+    "__pycache__"
+  ],
+  "ignore_suffixes": [
+    ".pyc",
+    ".pyd",
+    ".pyo"
+  ],
+  "files": {
+    ".env.example": {
+      "sha256": "f4178a85d3f3a7c9b8360af2a77e59ff22d9298f1ca99a88f795d2dbc977dec1",
+      "size": 122
+    },
+    "P1A_PLAN.md": {
+      "sha256": "290d38dfddb6e543ffb9ff86376d3b51a44556f11b2279193a5c05b0f729da02",
+      "size": 49606
+    },
+    "assets/01_master_worker_architecture.svg": {
+      "sha256": "652815015ea369f020c1a55b70b3a8b5c55c9ae9395dbde380a5a74391bf9311",
+      "size": 3413
+    },
+    "assets/02_business_flow.svg": {
+      "sha256": "6d0fe71189d5e4e78c49d40879539e1dc5d6ce1cf620a428632a8cf1c3d32d75",
+      "size": 3028
+    },
+    "assets/03_acp_multi_turn.svg": {
+      "sha256": "5aecec07af6b301cc009e3aaa2f10a42d49787375cdc9528bb851068a9bc17b3",
+      "size": 2831
+    },
+    "assets/04_board_loop.svg": {
+      "sha256": "c5c00759ccabc8f6ddf06db73be97d3eb2f0e1f7e0a1b3a0bec51242f64eed02",
+      "size": 3969
+    },
+    "assets/05_project_brief_scope.svg": {
+      "sha256": "d9f8dbc3652853fe3f72728ed485e9b56365483d23e642b96d673d59444c3ae3",
+      "size": 2604
+    },
+    "assets/06_data_contracts_code_view.svg": {
+      "sha256": "975bdca9e911a6c22dada29f4e2d9ccdb76b9a8872499f284b54aedf25591942",
+      "size": 2500
+    },
+    "assets/07_board_planning_pipeline.svg": {
+      "sha256": "8fac3bec33b82864f5b61ec951990cb9e9ea4bdcc64abc9eebf096ab7e3a67d2",
+      "size": 2563
+    },
+    "assets/08_private_task_package.svg": {
+      "sha256": "87785987e1b1ac1e45727c458cc92cbd9036719f8279b295aea485babc45b29a",
+      "size": 2541
+    },
+    "assets/09_acp_local_codex_minimal.svg": {
+      "sha256": "776c16a31299060b7d8b295e0dca509ae5f4bc1b39b6853dea77b3bbce1ad99e",
+      "size": 3256
+    },
+    "fixtures/baselines/manifest.json": {
+      "sha256": "53c41e23c746bfb0a44468810a92e9294d2cdfcd2e61149ef1b356e8b71e948c",
+      "size": 3949
+    },
+    "materials/product_goal.txt": {
+      "sha256": "3031f65b0d3f0d61615d7d0c8a00e08cf3cda08f522a7542535f8232479926de",
+      "size": 1158
+    },
+    "pyproject.toml": {
+      "sha256": "2f38da95f1231605648b954d0733e9f6cfe1a90dac5b3d93f77a253add88c970",
+      "size": 1187
+    },
+    "scripts/01_plan_board.py": {
+      "sha256": "fb9c1bfd06cbfd7e6528b55fef4f4acd4311ba1a3a86db64cff851e6cd6a6274",
+      "size": 9924
+    },
+    "scripts/02_worker_acp_smoke.py": {
+      "sha256": "3cafb9f6dbf5c97df83f0ac4398a3f7f378ad006240443ff5e8d4b234fc5f1cd",
+      "size": 8178
+    },
+    "scripts/03_context_isolation.py": {
+      "sha256": "54adea4e7d752bb26dc55c000e87acf7b804e87a3a30407cd1688479298b83a5",
+      "size": 14317
+    },
+    "scripts/04_triggerflow_master_loop.py": {
+      "sha256": "0ae9bc72e9209e7c6550118fccfb65333122a2741dcbbc86fdb28a38d56c47ba",
+      "size": 32508
+    },
+    "scripts/05_hangzhou_team_building_run.py": {
+      "sha256": "46d0782249d023dcc7b3f2cc3ca028ed6f3e24250b4b6b20867fd54874016094",
+      "size": 3199
+    },
+    "src/agentboard/README.md": {
+      "sha256": "637730ae0532a4f202c2e09db64c4094957a01b1ca66b2338f5f1b58ee2abf27",
+      "size": 3591
+    },
+    "src/agentboard/__init__.py": {
+      "sha256": "79c64f07f1beef64f2927364234e47347d615470eb9de8b69b4efed6cb8508b8",
+      "size": 1160
+    },
+    "src/agentboard/board.py": {
+      "sha256": "061c8cb958b470759d37beb7f2d657daa0c62aa06dbd9b17a347dad1dd8efc14",
+      "size": 8008
+    },
+    "src/agentboard/config.py": {
+      "sha256": "35a6a8385f3bffa3ca824255fba1d822131a2c5b6810a89c82f92de7bd2c2ba1",
+      "size": 1277
+    },
+    "src/agentboard/contracts.py": {
+      "sha256": "bd6de079f8a0b0c6aabc96b193176b807b7a7dde06461436a6b2f8ca3ad6573f",
+      "size": 16891
+    },
+    "src/agentboard/events.py": {
+      "sha256": "b2e3682bb686836589347850f46d201bc258b11cb6d7f8473146cdbdb2da0ec1",
+      "size": 2835
+    },
+    "src/agentboard/isolation.py": {
+      "sha256": "1234c263c4d6e847a76832604317a2e26d7eb89e00eb202420ce5a64a9a0b59c",
+      "size": 3078
+    },
+    "src/agentboard/planner.py": {
+      "sha256": "53696b650149d5e454326851645b632e74bf7886090e2427e7cccd450c42b269",
+      "size": 1686
+    },
+    "src/agentboard/util.py": {
+      "sha256": "99bc1946ef6860030e671fa3ea166129300e257a5943d206e30abaea245cf486",
+      "size": 2218
+    },
+    "src/agentboard/validation.py": {
+      "sha256": "e9f8ea49edee835bec9b10b710b10c141da2e85461753f914c918a789e45eb77",
+      "size": 4613
+    },
+    "src/agentboard/workers/__init__.py": {
+      "sha256": "2b5e8bb1286f24938f9e011f913a76b1fae2e9380ceecfb1214b750638aaf155",
+      "size": 429
+    },
+    "src/agentboard/workers/base.py": {
+      "sha256": "361a11ab92bfe1bbc2d3728a8600c4d974f9b046e08c8f69f08eab403af52d01",
+      "size": 1447
+    },
+    "src/agentboard/workers/mock.py": {
+      "sha256": "0bfb94180d481e101a65d71e0dc9e6879fcb117aceb5650fb7db076c9f438835",
+      "size": 1789
+    },
+    "tests/conftest.py": {
+      "sha256": "bd5fcfc262f22b49fa84c0929eac9f4e603189147a7684bcab90333e4105ebe3",
+      "size": 1588
+    },
+    "tests/test_board.py": {
+      "sha256": "72a1ccf2ea4e950d4eb97b351a02a42cde90bf589274b48a22798d4b4b0ed7c4",
+      "size": 4103
+    },
+    "tests/test_contracts.py": {
+      "sha256": "ac2e88542eb46174c937119dd3b16fa31507d8fb14c051ab36eb55e46c2f3342",
+      "size": 2062
+    },
+    "tests/test_isolation.py": {
+      "sha256": "9815254b1bf27b9db9016c7a066b336739248f898fa5a113c7f00cab4d1852f8",
+      "size": 2065
+    },
+    "tests/test_manifest_untouched.py": {
+      "sha256": "d816a4a8428580d7b2f95bd1ef48e2538f688d8ae870ef2fe812bf7e71e6dca2",
+      "size": 8321
+    },
+    "tests/test_mock_worker.py": {
+      "sha256": "5672d180abba0d6b6f3195ce081595c077a97af1d71690b694c4bb0009c7d1de",
+      "size": 1562
+    },
+    "tests/test_p05.py": {
+      "sha256": "f47748dbcc4b03a2d06fa4540050b8bcec584b25e78a9d60d90886100e28e42c",
+      "size": 6238
+    },
+    "tests/test_p051.py": {
+      "sha256": "5f29448d768a18456fef4448518e597c7d788926568e60dc316dca91290fa463",
+      "size": 6500
+    },
+    "tests/test_planner.py": {
+      "sha256": "17d94bee348cf91cacc2de659273b5e30651aa005e305ea59d9f3c2c1f6206ab",
+      "size": 1375
+    },
+    "tests/test_static_guards.py": {
+      "sha256": "078dc8b6c0358bda86a86f04586f26953c1bfdb485f3b2974f0a56c0af8e2e99",
+      "size": 8773
+    },
+    "tests/test_validation.py": {
+      "sha256": "646a331ef2b5357be34a7a4f082f842ef81b87cca9b5311bf28e1ccf35524ba9",
+      "size": 2324
+    },
+    "tools/verify_manifest.py": {
+      "sha256": "cdbf33aed89e56f58def8022a50d81f0e428f236ecce1654d04ef35bbb835a0c",
+      "size": 12678
+    },
+    "主Agent调度与多Agent协作.ipynb": {
+      "sha256": "ac8dbfd7e9660896df8c2a88437f9ceef065b2c75685a1ed88b16bd67f265f81",
+      "size": 89640
+    },
+    "主Agent调度与多Agent协作.md": {
+      "sha256": "9e881ca802ba10462948fd7e23f3820cef7d53e3823d1086f6abe94d6966b822",
+      "size": 69182
+    },
+    "主Agent调度与多Agent协作.pdf": {
+      "sha256": "691d9eb4c1d9c1a6d67465bf84f0d7ddf8ecdbb0ebd7a76d492ccbccc29f7f5d",
+      "size": 1790707
+    },
+    "升级改造计划.md": {
+      "sha256": "f5e151a0d83da55ebff4fee0574f1a46bcf3e41bb2bb3cf952ff236744803ac3",
+      "size": 6757
+    },
+    "项目含金量分析与面试介绍.md": {
+      "sha256": "3834af2e4366de655d5b15502a671a6b293e6682bea35067e4d7ef749423c47f",
+      "size": 12452
+    }
+  }
+}

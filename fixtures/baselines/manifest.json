@@ -1,0 +1,141 @@
+{
+  "manifest_schema": "agentboard.baseline.v1",
+  "root": ".",
+  "self_excluded": [
+    "fixtures/baselines/manifest.json",
+    "tools/verify_manifest.py"
+  ],
+  "guarded_prefixes": [
+    "scripts/"
+  ],
+  "ignore_dirs": [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    ".workbuddy",
+    "__pycache__"
+  ],
+  "ignore_suffixes": [
+    ".pyc",
+    ".pyd",
+    ".pyo"
+  ],
+  "entries": [
+    {
+      "path": "scripts/01_plan_board.py",
+      "sha256": "fb9c1bfd06cbfd7e6528b55fef4f4acd4311ba1a3a86db64cff851e6cd6a6274",
+      "size": 9924,
+      "tier": "A"
+    },
+    {
+      "path": "scripts/02_worker_acp_smoke.py",
+      "sha256": "3cafb9f6dbf5c97df83f0ac4398a3f7f378ad006240443ff5e8d4b234fc5f1cd",
+      "size": 8178,
+      "tier": "A"
+    },
+    {
+      "path": "scripts/03_context_isolation.py",
+      "sha256": "54adea4e7d752bb26dc55c000e87acf7b804e87a3a30407cd1688479298b83a5",
+      "size": 14317,
+      "tier": "A"
+    },
+    {
+      "path": "scripts/04_triggerflow_master_loop.py",
+      "sha256": "0ae9bc72e9209e7c6550118fccfb65333122a2741dcbbc86fdb28a38d56c47ba",
+      "size": 32508,
+      "tier": "A"
+    },
+    {
+      "path": "scripts/05_hangzhou_team_building_run.py",
+      "sha256": "46d0782249d023dcc7b3f2cc3ca028ed6f3e24250b4b6b20867fd54874016094",
+      "size": 3199,
+      "tier": "A"
+    },
+    {
+      "path": "assets/01_master_worker_architecture.svg",
+      "sha256": "652815015ea369f020c1a55b70b3a8b5c55c9ae9395dbde380a5a74391bf9311",
+      "size": 3413,
+      "tier": "B"
+    },
+    {
+      "path": "assets/02_business_flow.svg",
+      "sha256": "6d0fe71189d5e4e78c49d40879539e1dc5d6ce1cf620a428632a8cf1c3d32d75",
+      "size": 3028,
+      "tier": "B"
+    },
+    {
+      "path": "assets/03_acp_multi_turn.svg",
+      "sha256": "5aecec07af6b301cc009e3aaa2f10a42d49787375cdc9528bb851068a9bc17b3",
+      "size": 2831,
+      "tier": "B"
+    },
+    {
+      "path": "assets/04_board_loop.svg",
+      "sha256": "c5c00759ccabc8f6ddf06db73be97d3eb2f0e1f7e0a1b3a0bec51242f64eed02",
+      "size": 3969,
+      "tier": "B"
+    },
+    {
+      "path": "assets/05_project_brief_scope.svg",
+      "sha256": "d9f8dbc3652853fe3f72728ed485e9b56365483d23e642b96d673d59444c3ae3",
+      "size": 2604,
+      "tier": "B"
+    },
+    {
+      "path": "assets/06_data_contracts_code_view.svg",
+      "sha256": "975bdca9e911a6c22dada29f4e2d9ccdb76b9a8872499f284b54aedf25591942",
+      "size": 2500,
+      "tier": "B"
+    },
+    {
+      "path": "assets/07_board_planning_pipeline.svg",
+      "sha256": "8fac3bec33b82864f5b61ec951990cb9e9ea4bdcc64abc9eebf096ab7e3a67d2",
+      "size": 2563,
+      "tier": "B"
+    },
+    {
+      "path": "assets/08_private_task_package.svg",
+      "sha256": "87785987e1b1ac1e45727c458cc92cbd9036719f8279b295aea485babc45b29a",
+      "size": 2541,
+      "tier": "B"
+    },
+    {
+      "path": "assets/09_acp_local_codex_minimal.svg",
+      "sha256": "776c16a31299060b7d8b295e0dca509ae5f4bc1b39b6853dea77b3bbce1ad99e",
+      "size": 3256,
+      "tier": "B"
+    },
+    {
+      "path": "materials/product_goal.txt",
+      "sha256": "3031f65b0d3f0d61615d7d0c8a00e08cf3cda08f522a7542535f8232479926de",
+      "size": 1158,
+      "tier": "B"
+    },
+    {
+      "path": "主Agent调度与多Agent协作.md",
+      "sha256": "9e881ca802ba10462948fd7e23f3820cef7d53e3823d1086f6abe94d6966b822",
+      "size": 69182,
+      "tier": "B"
+    },
+    {
+      "path": "主Agent调度与多Agent协作.ipynb",
+      "sha256": "ac8dbfd7e9660896df8c2a88437f9ceef065b2c75685a1ed88b16bd67f265f81",
+      "size": 89640,
+      "tier": "B"
+    },
+    {
+      "path": "主Agent调度与多Agent协作.pdf",
+      "sha256": "691d9eb4c1d9c1a6d67465bf84f0d7ddf8ecdbb0ebd7a76d492ccbccc29f7f5d",
+      "size": 1790707,
+      "tier": "B"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "f4178a85d3f3a7c9b8360af2a77e59ff22d9298f1ca99a88f795d2dbc977dec1",
+      "size": 122,
+      "tier": "B"
+    }
+  ]
+}

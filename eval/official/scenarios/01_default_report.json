@@ -1,0 +1,14 @@
+{
+  "scenario_id": "default_report",
+  "title": "官方集默认报告",
+  "note": "不声明 snapshot_set：报告与 P2.2-2 基线逐字节一致（report_id=rp_9e0057b9f989020f）。",
+  "brief": {
+    "text": "为检索服务做技术选型（依据官方文档快照）",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  },
+  "policy": null,
+  "attestation": "none"
+}

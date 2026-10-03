@@ -1,0 +1,56 @@
+{
+  "scenario_id": "legacy_evidence_only",
+  "expect": {
+    "mode": "report",
+    "strict": false,
+    "report_id": "rp_fb075c8bf10c1726",
+    "integrity_passed": false,
+    "failed_codes": [
+      "I3",
+      "I4"
+    ],
+    "strict_error_codes": [
+      "I3",
+      "I4"
+    ],
+    "ranking": [
+      {
+        "rank": 1,
+        "candidate_id": "pgvector",
+        "score": 0.8
+      },
+      {
+        "rank": 2,
+        "candidate_id": "qdrant_local",
+        "score": 0.675
+      },
+      {
+        "rank": 3,
+        "candidate_id": "milvus_standalone",
+        "score": 0.5
+      }
+    ],
+    "unsupported": {
+      "milvus_standalone": [
+        "scale_ceiling"
+      ],
+      "qdrant_local": [
+        "managed_service_needed"
+      ]
+    },
+    "risk_rule_ids": [
+      "R_UNSUPPORTED_WEIGHTED",
+      "R_UNTRUSTED_BACKING"
+    ],
+    "coverage_supported": {
+      "milvus_standalone": 5,
+      "pgvector": 6,
+      "qdrant_local": 5
+    },
+    "trusted_finding_counts": {
+      "milvus_standalone": 5,
+      "pgvector": 0,
+      "qdrant_local": 5
+    }
+  }
+}

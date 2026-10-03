@@ -1,0 +1,8 @@
+{
+  "scenario_id": "ma_wrong_task_id",
+  "expect": {
+    "outcome": "failed",
+    "failure_reason_prefix": "board_invariant_violated:",
+    "final_report_present": false
+  }
+}

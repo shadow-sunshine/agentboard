@@ -1,0 +1,39 @@
+[project]
+name = "agentboard"
+version = "0.1.0"
+description = "AgentBoard: 面向技术选型研究的可验证/可隔离/可重试/可观测多 Agent 任务编排系统"
+readme = "src/agentboard/README.md"
+requires-python = ">=3.11"
+# 核心运行时零第三方依赖：保证单元测试不依赖真实模型/ACP/网络（需求11）。
+# acp / langgraph 仅作为可选 Adapter/运行时，后续阶段通过 extras 引入。
+dependencies = []
+
+[project.optional-dependencies]
+acp = ["acp"]
+langgraph = ["langgraph"]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+markers = [
+    "real_smoke: 真实联网 smoke 测试（opt-in），豁免代理/token 环境隔离，需读显式提供的凭据与代理",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+# 数据契约/反序列化边界层统一用 ValueError 表达「非法输入」（而非 TypeError），
+# 因为调用方传入的是外部 JSON/字典数据，属于值域校验；按文件忽略 TRY004，
+# 避免影响其它模块（状态机/调度等仍遵守 ruff 默认）。
+# P1A-1 追加 evidence.py：它同样是序列化边界（EvidenceRef.from_dict 读外部 JSON）。
+[tool.ruff.lint.per-file-ignores]
+"src/agentboard/contracts.py" = ["TRY004"]
+"src/agentboard/events.py" = ["TRY004"]
+"src/agentboard/validation.py" = ["TRY004"]
+"src/agentboard/board.py" = ["TRY004"]
+"src/agentboard/evidence.py" = ["TRY004"]
+

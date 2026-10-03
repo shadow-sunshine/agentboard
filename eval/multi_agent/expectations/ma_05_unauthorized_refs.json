@@ -1,0 +1,11 @@
+{
+  "scenario_id": "ma_unauthorized_refs",
+  "expect": {
+    "outcome": "blocked",
+    "final_report_present": false,
+    "events_present": [
+      "task_failed"
+    ],
+    "task_failed_contains": "越权"
+  }
+}

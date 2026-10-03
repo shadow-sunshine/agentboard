@@ -1,0 +1,132 @@
+{
+  "schema": "research.fixture.v1",
+  "candidate_id": "milvus_standalone",
+  "display_name": "Milvus Standalone",
+  "snapshot_version": "milvus_standalone.official.2026-09-23",
+  "captured_at": "2026-09-23",
+  "source_path": "fixtures/official/sources/milvus_standalone.json",
+  "source_kind": "official_documentation_excerpt",
+  "source_note": "内容为 Milvus 官方文档站对应源文件（milvus-io/milvus-docs，v3.0.x 分支）的逐行摘录，含正文中的 {{var.milvus_release_version}} 模板占位符。仅代表被引用的这几行原文。",
+  "sections": [
+    {
+      "section_id": "s_milvus_compose_three_containers",
+      "heading": "Run Milvus with Docker Compose (Linux)",
+      "text": "**Default deployment (v{{var.milvus_release_version}}):** `docker compose up -d` starts three containers — `milvus-etcd` (metadata), `milvus-minio` (object storage), and `milvus-standalone`. The message queue is **Woodpecker (embedded, with MinIO / object storage as its WAL backend)**, so no separate message-queue container is required.",
+      "tags": [
+        "deployment"
+      ],
+      "source_id": "doc_milvus_standalone_compose",
+      "line_range": "36"
+    },
+    {
+      "section_id": "s_milvus_embedded_deps",
+      "heading": "Run Milvus in Docker (Linux)",
+      "text": "By default this deployment runs **Woodpecker** (local-filesystem WAL) as the message queue and an **embedded etcd** for metadata — nothing else to install. To use a different message queue or connect external object storage / metadata, see:",
+      "tags": [
+        "deployment",
+        "hosting"
+      ],
+      "source_id": "doc_milvus_standalone_docker",
+      "line_range": "111"
+    }
+  ],
+  "dimension_values": {
+    "deployment_complexity": {
+      "value": "medium",
+      "section_id": "s_milvus_compose_three_containers",
+      "claim": "官方默认 Docker Compose 部署由一条 compose 命令启动三个容器（milvus-etcd 元数据 / milvus-minio 对象存储 / milvus-standalone），消息队列为内嵌 Woodpecker，不需要单独的消息队列容器。",
+      "source_id": "doc_milvus_standalone_compose",
+      "basis": "mapped",
+      "derivation": "原文 docker compose up -d starts three containers（etcd / MinIO / standalone）→ 维度定义为「从零到可用需要多少步骤与额外组件」→ 命令只有一条，但同时引入 3 个容器组件，多于单容器方案 ⇒ medium。"
+    },
+    "managed_service_needed": {
+      "value": "false",
+      "section_id": "s_milvus_embedded_deps",
+      "claim": "官方默认部署内嵌 Woodpecker（本地文件系统 WAL）作为消息队列、内嵌 etcd 作为元数据存储，原文明确 nothing else to install，未声明必须依赖外部托管服务。",
+      "source_id": "doc_milvus_standalone_docker",
+      "basis": "mapped",
+      "derivation": "原文 runs Woodpecker (local-filesystem WAL) ... and an embedded etcd ... nothing else to install → 维度定义为「是否需要引入外部托管服务」→ 默认自包含 ⇒ false。"
+    }
+  },
+  "provenance": {
+    "schema": "research.sources.v1",
+    "collected_at": "2026-09-23",
+    "collection_method": "人工一次性采集：从官方仓库的固定 ref 下载文件原件，按行号切片成摘录，并记录 url / repo / ref / commit_sha / blob_sha / raw_sha256 / 行号。运行时不联网；审计方式为重新下载 raw_url 并比对 raw_sha256 与行号。",
+    "candidate_id": "milvus_standalone",
+    "documents": [
+      {
+        "source_id": "doc_milvus_standalone_compose",
+        "kind": "official_docs",
+        "title": "Run Milvus with Docker Compose (Linux)",
+        "repo": "milvus-io/milvus-docs",
+        "path": "site/en/getstarted/run-milvus-docker/install_standalone-docker-compose.md",
+        "url": "https://github.com/milvus-io/milvus-docs/blob/756f9fbcd0120dd125d044aacd560697f6cbab9c/site/en/getstarted/run-milvus-docker/install_standalone-docker-compose.md",
+        "raw_url": "https://raw.githubusercontent.com/milvus-io/milvus-docs/756f9fbcd0120dd125d044aacd560697f6cbab9c/site/en/getstarted/run-milvus-docker/install_standalone-docker-compose.md",
+        "ref": "v3.0.x",
+        "ref_kind": "branch",
+        "commit_sha": "756f9fbcd0120dd125d044aacd560697f6cbab9c",
+        "blob_sha": "7272af7d7348241d4774009032e2119286b6aabd",
+        "raw_sha256": "a9239172f28a71efdfc734ac925a2e07974fb62b95c81644f8089573f032b7ca",
+        "release_tag": "unknown",
+        "release_tag_note": "正文用 {{var.milvus_release_version}} 模板占位，页面本身不声明具体版本；采集自文档仓库 v3.0.x 分支。",
+        "upstream_latest_release": "v3.0.2",
+        "upstream_latest_release_note": "采集时 milvus-io/milvus（服务端代码仓库）的最新 release tag，仅作参考。",
+        "upstream_license": "Apache-2.0",
+        "upstream_license_note": "文档仓库许可证；引用仅限短摘录并标注出处。",
+        "collected_at": "2026-09-23",
+        "raw_lines": 157
+      },
+      {
+        "source_id": "doc_milvus_standalone_docker",
+        "kind": "official_docs",
+        "title": "Run Milvus in Docker (Linux)",
+        "repo": "milvus-io/milvus-docs",
+        "path": "site/en/getstarted/run-milvus-docker/install_standalone-docker.md",
+        "url": "https://github.com/milvus-io/milvus-docs/blob/756f9fbcd0120dd125d044aacd560697f6cbab9c/site/en/getstarted/run-milvus-docker/install_standalone-docker.md",
+        "raw_url": "https://raw.githubusercontent.com/milvus-io/milvus-docs/756f9fbcd0120dd125d044aacd560697f6cbab9c/site/en/getstarted/run-milvus-docker/install_standalone-docker.md",
+        "ref": "v3.0.x",
+        "ref_kind": "branch",
+        "commit_sha": "756f9fbcd0120dd125d044aacd560697f6cbab9c",
+        "blob_sha": "902879bc4b558515fd3488aa7094e6f61ee6b671",
+        "raw_sha256": "eae1d470d1cd2e9953106afe9e96938001e79eda381f17bd884dbb39c250f651",
+        "release_tag": "unknown",
+        "release_tag_note": "正文用 {{var.milvus_release_version}} 模板占位，页面本身不声明具体版本；采集自文档仓库 v3.0.x 分支。",
+        "upstream_latest_release": "v3.0.2",
+        "upstream_latest_release_note": "采集时 milvus-io/milvus（服务端代码仓库）的最新 release tag，仅作参考。",
+        "upstream_license": "Apache-2.0",
+        "upstream_license_note": "文档仓库许可证；引用仅限短摘录并标注出处。",
+        "collected_at": "2026-09-23",
+        "raw_lines": 143
+      }
+    ],
+    "unknown_dimensions": {
+      "ops_skill_floor": {
+        "reason": "官方安装页描述了如何改配置与升级（user.yaml、standalone_embed.sh upgrade），但没有任何句子在陈述日常运维对团队技能栈的要求；属于「文档没谈这一维度」，不推断。",
+        "checked_source_ids": [
+          "doc_milvus_standalone_docker",
+          "doc_milvus_standalone_compose"
+        ]
+      },
+      "query_latency": {
+        "reason": "官方安装文档不含任何延迟数据；本轮不写速度结论。",
+        "checked_source_ids": [
+          "doc_milvus_standalone_docker",
+          "doc_milvus_standalone_compose"
+        ]
+      },
+      "scale_ceiling": {
+        "reason": "安装文档只提供指向 Scale your Milvus cluster 的导航链接，未陈述单机部署能承载的数据量级或横向扩展上限；无法在同一量表上收敛。",
+        "checked_source_ids": [
+          "doc_milvus_standalone_docker",
+          "doc_milvus_standalone_compose"
+        ]
+      },
+      "ecosystem_maturity": {
+        "reason": "该维度定义同时包含文档质量、社区规模与周边工具完备程度，其中社区规模无法从官方文档确认，量表也没有可核对的判定依据；本轮不写社区活跃度结论。",
+        "checked_source_ids": [
+          "doc_milvus_standalone_docker"
+        ]
+      }
+    }
+  }
+}

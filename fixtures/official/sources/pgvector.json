@@ -1,0 +1,120 @@
+{
+  "schema": "research.fixture.v1",
+  "candidate_id": "pgvector",
+  "display_name": "pgvector + PostgreSQL",
+  "snapshot_version": "pgvector.official.2026-09-23",
+  "captured_at": "2026-09-23",
+  "source_path": "fixtures/official/sources/pgvector.json",
+  "source_kind": "official_documentation_excerpt",
+  "source_note": "内容为 pgvector 官方仓库 README 的逐行摘录（含原样 Markdown 标记），采集自 master 分支的固定 commit。仅代表被引用的这几行原文，不代表项目整体评价。",
+  "sections": [
+    {
+      "section_id": "s_pg_extension_enable",
+      "heading": "pgvector/README.md",
+      "text": "Enable the extension (do this once in each database where you want to use it)",
+      "tags": [
+        "deployment",
+        "extension"
+      ],
+      "source_id": "doc_pgvector_readme",
+      "line_range": "55"
+    },
+    {
+      "section_id": "s_pg_monitoring_reuse",
+      "heading": "pgvector/README.md",
+      "text": "Use existing tools like [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) or [PgHero](https://github.com/ankane/pghero) to monitor performance.",
+      "tags": [
+        "operations",
+        "monitoring"
+      ],
+      "source_id": "doc_pgvector_readme",
+      "line_range": "764"
+    },
+    {
+      "section_id": "s_pg_hosted_postgres",
+      "heading": "pgvector/README.md",
+      "text": "pgvector is available on [these providers](https://github.com/pgvector/pgvector/issues/54).",
+      "tags": [
+        "hosting"
+      ],
+      "source_id": "doc_pgvector_readme",
+      "line_range": "1270"
+    }
+  ],
+  "dimension_values": {
+    "deployment_complexity": {
+      "value": "low",
+      "section_id": "s_pg_extension_enable",
+      "claim": "官方启用步骤是在每个需要使用的数据库里启用该扩展（执行一次），检索能力并入既有 PostgreSQL，不新增独立服务进程。",
+      "source_id": "doc_pgvector_readme",
+      "basis": "mapped",
+      "derivation": "原文 Enable the extension (do this once in each database ...) → 维度定义为「从零到可用需要多少步骤与额外组件」→ 无额外服务、单步启用 ⇒ low。"
+    },
+    "ops_skill_floor": {
+      "value": "low",
+      "section_id": "s_pg_monitoring_reuse",
+      "claim": "官方监控指引是复用 Postgres 既有工具（pg_stat_statements / PgHero），不要求团队引入新的监控体系。",
+      "source_id": "doc_pgvector_readme",
+      "basis": "mapped",
+      "derivation": "原文 Use existing tools like pg_stat_statements or PgHero to monitor performance → 维度定义为「日常运维对团队既有技能栈的额外要求；越低越容易维持」→ 复用既有工具链 ⇒ low。"
+    },
+    "managed_service_needed": {
+      "value": "false",
+      "section_id": "s_pg_hosted_postgres",
+      "claim": "托管形态在官方文档里只是单列的 Hosted Postgres 一节（指向第三方 provider 列表），安装章节全部为自行安装路径，未声明必须依赖外部托管服务。",
+      "source_id": "doc_pgvector_readme",
+      "basis": "mapped",
+      "derivation": "原文 pgvector is available on these providers（独立小节，指向外部 provider 列表）→ 维度定义为「是否需要引入外部托管服务」→ 托管属可选路径而非前置条件 ⇒ false。"
+    }
+  },
+  "provenance": {
+    "schema": "research.sources.v1",
+    "collected_at": "2026-09-23",
+    "collection_method": "人工一次性采集：从官方仓库的固定 ref 下载文件原件，按行号切片成摘录，并记录 url / repo / ref / commit_sha / blob_sha / raw_sha256 / 行号。运行时不联网；审计方式为重新下载 raw_url 并比对 raw_sha256 与行号。",
+    "candidate_id": "pgvector",
+    "documents": [
+      {
+        "source_id": "doc_pgvector_readme",
+        "kind": "official_repo_file",
+        "title": "pgvector/README.md",
+        "repo": "pgvector/pgvector",
+        "path": "README.md",
+        "url": "https://github.com/pgvector/pgvector/blob/7db2345ed99bc77bf33cbdc8b12bd1973210dc81/README.md",
+        "raw_url": "https://raw.githubusercontent.com/pgvector/pgvector/7db2345ed99bc77bf33cbdc8b12bd1973210dc81/README.md",
+        "ref": "master",
+        "ref_kind": "branch",
+        "commit_sha": "7db2345ed99bc77bf33cbdc8b12bd1973210dc81",
+        "blob_sha": "bcb7edaf91d2bb005675d378bb0ed495cc279c82",
+        "raw_sha256": "54cb3a5f4344308476cb2378469ac77d10fbff415d1b5be66608bb386ce8f527",
+        "release_tag": "unknown",
+        "release_tag_note": "该 README 自身不声明版本号；采集到的是 master 分支的文件快照，故版本标签记为 unknown，可复核锚点为 commit_sha / blob_sha / raw_sha256。",
+        "upstream_latest_release": "v0.8.6",
+        "upstream_latest_release_note": "采集时该代码仓库的最新 release tag，仅作参考，不代表被引用的 README 对应此版本。",
+        "upstream_license": "NOASSERTION",
+        "upstream_license_note": "GitHub API 未能识别该仓库许可证；引用仅限短摘录并标注出处。",
+        "collected_at": "2026-09-23",
+        "raw_lines": 1361
+      }
+    ],
+    "unknown_dimensions": {
+      "query_latency": {
+        "reason": "官方 README 只给出 HNSW 与 IVFFlat 之间的相对快慢比较（如 better query performance than IVFFlat），没有任何可复核的绝对延迟数据，本轮不写速度结论。",
+        "checked_source_ids": [
+          "doc_pgvector_readme"
+        ]
+      },
+      "scale_ceiling": {
+        "reason": "原文同时给出方向相反的两类事实：单个非分区表默认上限 32 TB、分区表可容纳数千个该尺寸的表（上限很大），以及横向扩展需借助 replicas / Citus / PgDog 等外部方案（非原生）。无法在同一量表上收敛为一个标签。",
+        "checked_source_ids": [
+          "doc_pgvector_readme"
+        ]
+      },
+      "ecosystem_maturity": {
+        "reason": "该维度定义同时包含文档质量、社区规模与周边工具完备程度，其中社区规模无法从官方文档确认，量表（nascent / growing / mature）也没有可核对的判定依据；本轮不写社区活跃度结论。",
+        "checked_source_ids": [
+          "doc_pgvector_readme"
+        ]
+      }
+    }
+  }
+}

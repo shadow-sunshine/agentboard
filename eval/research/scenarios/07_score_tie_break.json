@@ -1,0 +1,35 @@
+{
+  "scenario_id": "score_tie_break",
+  "title": "分数并列的 tie-break",
+  "note": "把 qdrant_local 的六个维度取值对齐到与 pgvector 相同：两者同分 0.80，排名必须按 candidate_id 字典序；同时触发 R_SCORE_GAP_TIGHT。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "override_dimension_values",
+    "overrides": {
+      "qdrant_local": {
+        "deployment_complexity": {
+          "value": "low"
+        },
+        "ops_skill_floor": {
+          "value": "low"
+        },
+        "query_latency": {
+          "value": "good"
+        },
+        "scale_ceiling": {
+          "value": "medium"
+        },
+        "ecosystem_maturity": {
+          "value": "mature"
+        },
+        "managed_service_needed": {
+          "value": "false",
+          "section_id": "s_ops"
+        }
+      }
+    }
+  }
+}

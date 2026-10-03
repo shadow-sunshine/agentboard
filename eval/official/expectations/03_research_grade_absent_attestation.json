@@ -1,0 +1,35 @@
+{
+  "scenario_id": "research_grade_absent_attestation",
+  "expect": {
+    "mode": "report",
+    "strict": false,
+    "report_id": "rp_9e0057b9f989020f",
+    "integrity_passed": false,
+    "failed_codes": [
+      "I10_NON_PROMOTABLE_SUPPORT"
+    ],
+    "ranking": [
+      {
+        "rank": 1,
+        "candidate_id": "pgvector",
+        "score": 0.45
+      },
+      {
+        "rank": 2,
+        "candidate_id": "qdrant_local",
+        "score": 0.375
+      },
+      {
+        "rank": 3,
+        "candidate_id": "milvus_standalone",
+        "score": 0.2
+      }
+    ],
+    "strict_error_codes": [
+      "I10_NON_PROMOTABLE_SUPPORT"
+    ],
+    "i10_detail_contains": [
+      "absent"
+    ]
+  }
+}

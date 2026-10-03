@@ -1,0 +1,14 @@
+{
+  "scenario_id": "attestation_version_expired",
+  "title": "核对规则版本过期",
+  "note": "verifier_version +1 的变异副本 ⇒ 文件绑定仍通过，I10 version_expired。",
+  "brief": {
+    "text": "为检索服务做技术选型（依据官方文档快照）",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  },
+  "policy": "research_grade",
+  "attestation": "expired"
+}

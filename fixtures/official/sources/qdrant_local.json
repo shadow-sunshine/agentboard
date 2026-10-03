@@ -1,0 +1,118 @@
+{
+  "schema": "research.fixture.v1",
+  "candidate_id": "qdrant_local",
+  "display_name": "Qdrant self-hosted single-node",
+  "snapshot_version": "qdrant_local.official.2026-09-23",
+  "captured_at": "2026-09-23",
+  "source_path": "fixtures/official/sources/qdrant_local.json",
+  "source_kind": "official_documentation_excerpt",
+  "source_note": "内容为 Qdrant 官方文档站对应源文件（qdrant/landing_page，master 分支）的逐行摘录。仅代表被引用的这几行原文，不代表项目整体评价。",
+  "sections": [
+    {
+      "section_id": "s_qdrant_container_easiest",
+      "heading": "Installation requirements",
+      "text": "The easiest way to start using Qdrant for testing or development is to run the Qdrant container image.",
+      "tags": [
+        "deployment"
+      ],
+      "source_id": "doc_qdrant_installation",
+      "line_range": "142"
+    },
+    {
+      "section_id": "s_qdrant_self_managed_duties",
+      "heading": "Installation requirements",
+      "text": "* To use a performant [persistent storage](#storage) for your data\n* To configure the [security settings](/documentation/security/) for your deployment",
+      "tags": [
+        "operations"
+      ],
+      "source_id": "doc_qdrant_installation",
+      "line_range": "129-130"
+    },
+    {
+      "section_id": "s_qdrant_own_infrastructure",
+      "heading": "Installation requirements",
+      "text": "If you want to run Qdrant in your own infrastructure, without any cloud connection, we recommend to install Qdrant in a Kubernetes cluster with our Qdrant Private Cloud Enterprise Operator.",
+      "tags": [
+        "hosting"
+      ],
+      "source_id": "doc_qdrant_installation",
+      "line_range": "71"
+    }
+  ],
+  "dimension_values": {
+    "deployment_complexity": {
+      "value": "low",
+      "section_id": "s_qdrant_container_easiest",
+      "claim": "官方把「运行 Qdrant 容器镜像」描述为测试或开发场景下最省事的启动方式，单容器即可运行。",
+      "source_id": "doc_qdrant_installation",
+      "basis": "mapped",
+      "derivation": "原文 The easiest way to start using Qdrant for testing or development is to run the Qdrant container image → 维度定义为「从零到可用需要多少步骤与额外组件」→ 单容器、无需额外组件 ⇒ low。"
+    },
+    "ops_skill_floor": {
+      "value": "medium",
+      "section_id": "s_qdrant_self_managed_duties",
+      "claim": "官方在「用 Docker / Docker Compose 跑生产」一节明确列出必须自行保证的事项：为数据准备高性能持久化存储、为部署自行配置安全设置。",
+      "source_id": "doc_qdrant_installation",
+      "basis": "mapped",
+      "derivation": "原文 you have to make sure: To use a performant persistent storage ... To configure the security settings → 维度定义为「日常运维对团队既有技能栈的额外要求」→ 存储与安全需自行负责 ⇒ medium。"
+    },
+    "managed_service_needed": {
+      "value": "false",
+      "section_id": "s_qdrant_own_infrastructure",
+      "claim": "官方给出「在自有基础设施上运行、不接入任何云连接」的路径（Kubernetes + Qdrant Private Cloud Enterprise Operator），托管云是与自建并列的选项而非前置条件。",
+      "source_id": "doc_qdrant_installation",
+      "basis": "mapped",
+      "derivation": "原文 If you want to run Qdrant in your own infrastructure, without any cloud connection ... → 维度定义为「是否需要引入外部托管服务」→ 存在完全自托管路径 ⇒ false。"
+    }
+  },
+  "provenance": {
+    "schema": "research.sources.v1",
+    "collected_at": "2026-09-23",
+    "collection_method": "人工一次性采集：从官方仓库的固定 ref 下载文件原件，按行号切片成摘录，并记录 url / repo / ref / commit_sha / blob_sha / raw_sha256 / 行号。运行时不联网；审计方式为重新下载 raw_url 并比对 raw_sha256 与行号。",
+    "candidate_id": "qdrant_local",
+    "documents": [
+      {
+        "source_id": "doc_qdrant_installation",
+        "kind": "official_docs",
+        "title": "Installation requirements",
+        "repo": "qdrant/landing_page",
+        "path": "qdrant-landing/content/documentation/installation.md",
+        "url": "https://github.com/qdrant/landing_page/blob/32eb334faf299b1cbfe0bddc7cd79e10b77012c4/qdrant-landing/content/documentation/installation.md",
+        "raw_url": "https://raw.githubusercontent.com/qdrant/landing_page/32eb334faf299b1cbfe0bddc7cd79e10b77012c4/qdrant-landing/content/documentation/installation.md",
+        "ref": "master",
+        "ref_kind": "branch",
+        "commit_sha": "32eb334faf299b1cbfe0bddc7cd79e10b77012c4",
+        "blob_sha": "ef35f664d6ea4313493be69843ece712de9e45c7",
+        "raw_sha256": "18c7717a44180d3d315346bb45fcf2e8edb6b00f217ce3f1285c4f02abe1dbab",
+        "release_tag": "unknown",
+        "release_tag_note": "该文档仓库没有任何 release tag，正文也不声明 Qdrant 版本，故记为 unknown；可复核锚点为 commit_sha / blob_sha / raw_sha256。",
+        "upstream_latest_release": "v1.19.1",
+        "upstream_latest_release_note": "采集时 qdrant/qdrant（服务端代码仓库）的最新 release tag，仅作参考。",
+        "upstream_license": "unknown",
+        "upstream_license_note": "GitHub API 未声明该文档仓库许可证；引用仅限短摘录并标注出处。",
+        "collected_at": "2026-09-23",
+        "raw_lines": 238
+      }
+    ],
+    "unknown_dimensions": {
+      "query_latency": {
+        "reason": "安装文档不含任何延迟数据，只列出 CPU/内存/存储/网络的资源要求；本轮不写速度结论。",
+        "checked_source_ids": [
+          "doc_qdrant_installation"
+        ]
+      },
+      "scale_ceiling": {
+        "reason": "安装文档只说明「集群中每个实例需要开放 6335 端口用于分布式部署」，未陈述单机部署能承载的数据量级；无法在同一量表上收敛。",
+        "checked_source_ids": [
+          "doc_qdrant_installation"
+        ]
+      },
+      "ecosystem_maturity": {
+        "reason": "该维度定义同时包含文档质量、社区规模与周边工具完备程度，其中社区规模无法从官方文档确认，量表也没有可核对的判定依据；本轮不写社区活跃度结论。",
+        "checked_source_ids": [
+          "doc_qdrant_installation"
+        ]
+      }
+    }
+  }
+}

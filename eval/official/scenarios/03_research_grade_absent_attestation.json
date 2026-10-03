@@ -1,0 +1,14 @@
+{
+  "scenario_id": "research_grade_absent_attestation",
+  "title": "research_grade 无证明",
+  "note": "移走 attestation ⇒ I10 absent（显式记录不崩溃）；报告内容不变（report_id 同默认）。",
+  "brief": {
+    "text": "为检索服务做技术选型（依据官方文档快照）",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  },
+  "policy": "research_grade",
+  "attestation": "none"
+}

@@ -1,0 +1,28 @@
+{
+  "scenario_id": "unparsable_source",
+  "expect": {
+    "outcome": "completed",
+    "failure_reason": "",
+    "report_id": "rp_c8654cc528d9fd80",
+    "integrity_passed": true,
+    "budget_provider_requests": 22,
+    "budget_retries": 1,
+    "degraded_candidates": [],
+    "unsupported_dimensions": {
+      "pgvector": [
+        "ecosystem_maturity",
+        "managed_service_needed",
+        "ops_skill_floor",
+        "query_latency",
+        "scale_ceiling"
+      ],
+      "qdrant_local": [
+        "ecosystem_maturity",
+        "managed_service_needed",
+        "ops_skill_floor",
+        "query_latency",
+        "scale_ceiling"
+      ]
+    }
+  }
+}

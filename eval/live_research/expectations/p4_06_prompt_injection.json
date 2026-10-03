@@ -1,0 +1,9 @@
+{
+  "scenario_id": "p4_prompt_injection",
+  "expect": {
+    "outcome": "failed",
+    "failure_reason": "decision_failed:DecisionGenerationError",
+    "budget_decision_requests": 2,
+    "budget_decision_retries": 1
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "scenario_id": "success",
+  "title": "成功：全链路完成",
+  "note": "全部步骤成功、决策覆盖两个候选的主维度 ⇒ 确定性报告（其余维度显式 unsupported）。",
+  "brief": {
+    "text": "live-research MVP 端到端评测",
+    "source": "docs/research/selection_goal.md"
+  },
+  "candidates": [
+    "pgvector",
+    "qdrant_local"
+  ],
+  "gap_recheck": true,
+  "budget": {
+    "max_steps": 64,
+    "max_provider_requests": 64,
+    "max_total_content_chars": 100000,
+    "max_retries_per_step": 1
+  },
+  "provider": {
+    "documents": {
+      "pgvector deployment_complexity": [
+        {
+          "content": "pgvector 的官方说明：关于 deployment_complexity 的原文材料。"
+        }
+      ],
+      "pgvector ops_skill_floor": [
+        {
+          "content": "pgvector 的官方说明：关于 ops_skill_floor 的原文材料。"
+        }
+      ],
+      "qdrant_local deployment_complexity": [
+        {
+          "content": "qdrant_local 的官方说明：关于 deployment_complexity 的原文材料。"
+        }
+      ],
+      "qdrant_local ops_skill_floor": [
+        {
+          "content": "qdrant_local 的官方说明：关于 ops_skill_floor 的原文材料。"
+        }
+      ]
+    },
+    "failures": {}
+  },
+  "decisions": {
+    "pgvector": {
+      "deployment_complexity": {
+        "value": "low",
+        "claim": "脚本决策：单步启用 ⇒ low。"
+      }
+    },
+    "qdrant_local": {
+      "deployment_complexity": {
+        "value": "low",
+        "claim": "脚本决策：容器单节点 ⇒ low。"
+      }
+    }
+  }
+}

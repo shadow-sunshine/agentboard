@@ -1,0 +1,13 @@
+{
+  "scenario_id": "ma_normal_collaboration",
+  "expect": {
+    "outcome": "completed",
+    "final_report_present": true,
+    "verdicts": {
+      "verify_report": "passed"
+    },
+    "events_present": [
+      "verifier_passed"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "scenario_id": "p4_run_id_config_change",
+  "expect": {
+    "outcome": "completed",
+    "failure_reason": "",
+    "report_id": "rp_0afb9ee96deaa35d",
+    "integrity_passed": true,
+    "decision_budget_exhausted": false,
+    "unsupported_dimensions": {
+      "pgvector": [
+        "ecosystem_maturity",
+        "managed_service_needed",
+        "ops_skill_floor",
+        "query_latency",
+        "scale_ceiling"
+      ],
+      "qdrant_local": [
+        "ecosystem_maturity",
+        "managed_service_needed",
+        "ops_skill_floor",
+        "query_latency",
+        "scale_ceiling"
+      ]
+    },
+    "run_id_differs_from": "p4_success"
+  }
+}

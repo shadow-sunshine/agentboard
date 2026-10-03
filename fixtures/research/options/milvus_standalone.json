@@ -1,0 +1,69 @@
+{
+  "schema": "research.fixture.v1",
+  "candidate_id": "milvus_standalone",
+  "display_name": "Milvus 单机版",
+  "snapshot_version": "milvus-notes.2026-09-01",
+  "captured_at": "2026-09-01",
+  "source_path": "fixtures/research/options/milvus_standalone.json",
+  "source_kind": "authored_summary",
+  "source_note": "P1A 阶段的快照是人工撰写的技术摘要，不是真实文档转录。结论口径只代表本快照，不代表客观事实。",
+  "sections": [
+    {
+      "section_id": "s_deploy",
+      "heading": "部署与上线",
+      "text": "单机模式仍需独立部署服务进程，并引入消息队列与对象存储等依赖组件；首次上线需要按官方清单逐项配置。",
+      "tags": ["deployment"]
+    },
+    {
+      "section_id": "s_ops",
+      "heading": "运维负担",
+      "text": "需要单独规划服务进程的资源、日志与健康检查，并维护新增依赖组件；与既有数据库体系相互独立，形成第二套运维对象。",
+      "tags": ["operations"]
+    },
+    {
+      "section_id": "s_perf",
+      "heading": "检索性能",
+      "text": "面向高并发向量检索设计，索引与查询链路独立于业务数据库，在同等规模下检索延迟表现最优。",
+      "tags": ["performance"]
+    },
+    {
+      "section_id": "s_eco",
+      "heading": "生态与文档",
+      "text": "文档结构完整、官方示例较多，社区活跃；但周边工具与既有数据库生态的重合度低，需要额外学习成本。",
+      "tags": ["ecosystem"]
+    },
+    {
+      "section_id": "s_hosting",
+      "heading": "托管依赖",
+      "text": "官方同时提供托管服务，但单机模式可完全自托管，不强制依赖外部托管；是否使用托管取决于部署环境。",
+      "tags": ["hosting"]
+    }
+  ],
+  "dimension_values": {
+    "deployment_complexity": {
+      "value": "high",
+      "section_id": "s_deploy",
+      "claim": "需独立部署服务进程并引入消息队列与对象存储等额外依赖"
+    },
+    "ops_effort": {
+      "value": "high",
+      "section_id": "s_ops",
+      "claim": "需要维护第二套独立服务与依赖组件，形成独立运维对象"
+    },
+    "query_latency": {
+      "value": "excellent",
+      "section_id": "s_perf",
+      "claim": "检索链路独立于业务库，同等规模下延迟表现最优"
+    },
+    "ecosystem_maturity": {
+      "value": "mature",
+      "section_id": "s_eco",
+      "claim": "官方文档与示例完整、社区活跃"
+    },
+    "managed_service_needed": {
+      "value": "false",
+      "section_id": "s_hosting",
+      "claim": "单机模式可完全自托管，不强制依赖官方托管服务"
+    }
+  }
+}

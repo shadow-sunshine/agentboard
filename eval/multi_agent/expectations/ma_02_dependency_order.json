@@ -1,0 +1,21 @@
+{
+  "scenario_id": "ma_dependency_order",
+  "expect": {
+    "outcome": "completed",
+    "final_report_present": true,
+    "event_order": [
+      [
+        "task_started",
+        "research_candidates"
+      ],
+      [
+        "task_started",
+        "verify_report"
+      ],
+      [
+        "task_started",
+        "synthesize"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "scenario_id": "ma_worker_retry",
+  "expect": {
+    "outcome": "completed",
+    "final_report_present": true,
+    "events_present": [
+      "task_retry"
+    ]
+  }
+}

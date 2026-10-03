@@ -1,0 +1,7 @@
+{
+  "scenario_id": "ma_plan_unknown_dep",
+  "expect": {
+    "outcome": "failed",
+    "failure_reason_prefix": "plan_rejected:"
+  }
+}

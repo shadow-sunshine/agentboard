@@ -1,0 +1,12 @@
+{
+  "scenario_id": "normal_full_report",
+  "title": "正常完整报告",
+  "note": "三个候选都有完整快照；报告必须通过 I1–I9，并给出可复现的排名。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  }
+}

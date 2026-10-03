@@ -1,0 +1,49 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ---- 凭据（绝不提交）----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- 运行产物（每次运行都变，不入库）----
+# 报告页与 JSON 产物是"跑一次就有"的东西；仓库只保留 docs/demo/ 里的固定样例。
+var/
+runs/
+demo_runs/
+.raw/
+!docs/demo/**
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ---- 明确入库的例外（放在最后，靠上面的规则豁免）----
+# 注：本仓库**故意不忽略** scripts/、materials/、assets/ —— 它们被
+# tools/verify_manifest.py 与 tests/test_manifest_untouched.py 强校验，
+# 忽略掉会让两条门禁直接失败。课程早期 demo 与当前 src/ 实现的关系见 README。
+
+# ---- Agent 工作目录（本地运行记忆与临时抓取，不属于项目代码）----
+.workbuddy/
+
+# ---- 换行符：仓库统一存 LF，避免 Windows checkout 的 CRLF 改动
+# 已签名的 fixture JSON / 签名文件必须逐字节一致，否则 sign_fixtures --check 失败 ----
+* text=auto eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf

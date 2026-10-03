@@ -1,0 +1,68 @@
+{
+  "algorithm": "sha256+git_blob_sha1+line_slice",
+  "documents": [
+    {
+      "blob_sha": "7272af7d7348241d4774009032e2119286b6aabd",
+      "line_ranges": [
+        "36"
+      ],
+      "raw_sha256": "a9239172f28a71efdfc734ac925a2e07974fb62b95c81644f8089573f032b7ca",
+      "result": "passed",
+      "source_id": "doc_milvus_standalone_compose"
+    },
+    {
+      "blob_sha": "902879bc4b558515fd3488aa7094e6f61ee6b671",
+      "line_ranges": [
+        "111"
+      ],
+      "raw_sha256": "eae1d470d1cd2e9953106afe9e96938001e79eda381f17bd884dbb39c250f651",
+      "result": "passed",
+      "source_id": "doc_milvus_standalone_docker"
+    },
+    {
+      "blob_sha": "bcb7edaf91d2bb005675d378bb0ed495cc279c82",
+      "line_ranges": [
+        "55",
+        "764",
+        "1270"
+      ],
+      "raw_sha256": "54cb3a5f4344308476cb2378469ac77d10fbff415d1b5be66608bb386ce8f527",
+      "result": "passed",
+      "source_id": "doc_pgvector_readme"
+    },
+    {
+      "blob_sha": "ef35f664d6ea4313493be69843ece712de9e45c7",
+      "line_ranges": [
+        "71",
+        "129-130",
+        "142"
+      ],
+      "raw_sha256": "18c7717a44180d3d315346bb45fcf2e8edb6b00f217ce3f1285c4f02abe1dbab",
+      "result": "passed",
+      "source_id": "doc_qdrant_installation"
+    }
+  ],
+  "index_sha256": "d11a36da7cf54ad8c7fc96d693c08509c6bee2e87696b8fbf7f7a213229f9688",
+  "overall_result": "passed",
+  "schema": "source.verification.attestation.v1",
+  "snapshot_files": [
+    {
+      "candidate_id": "milvus_standalone",
+      "path": "sources/milvus_standalone.json",
+      "sha256": "5a9cc41490ab9c4ce9798b896a97812c25126417de11601b3874d04528ddd34e"
+    },
+    {
+      "candidate_id": "pgvector",
+      "path": "sources/pgvector.json",
+      "sha256": "84765591a09c584a86d2c2b5afb5d9d738c535727ec55dfb13d16e5b275cb987"
+    },
+    {
+      "candidate_id": "qdrant_local",
+      "path": "sources/qdrant_local.json",
+      "sha256": "9f48ba45192f96d0622b5326ce377e607f2561d7fd3479ae00a7340d165ce013"
+    }
+  ],
+  "snapshot_set_id": "official.2026-09-23",
+  "verifier": "tools/verify_sources.py",
+  "verifier_version": 1
+}

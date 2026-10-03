@@ -1,0 +1,52 @@
+{
+  "scenario_id": "ma_config_change",
+  "title": "编排配置变化 ⇒ run_id 变化",
+  "note": "与 ma_01 同输入，仅 max_card_attempts 不同 ⇒ run_id 必须不同。",
+  "goal": "为检索服务做技术选型（多 Agent 协作研究）",
+  "planner": {
+    "tasks": [
+      {
+        "task_id": "research_candidates",
+        "title": "研究候选",
+        "assigned_agent": "researcher",
+        "goal": "基于官方资料快照研究候选方案",
+        "context": "candidate_ids: pgvector,qdrant_local\n研究范围以声明为准。",
+        "depends_on": []
+      },
+      {
+        "task_id": "verify_report",
+        "title": "独立重验",
+        "assigned_agent": "verifier",
+        "goal": "独立重验研究产物",
+        "context": "candidate_ids: pgvector,qdrant_local\n研究范围以声明为准。",
+        "depends_on": [
+          "research_candidates"
+        ]
+      },
+      {
+        "task_id": "synthesize",
+        "title": "合成最终报告",
+        "assigned_agent": "synthesizer",
+        "goal": "汇总验证通过的结论",
+        "context": "candidate_ids: pgvector,qdrant_local\n研究范围以声明为准。",
+        "depends_on": [
+          "verify_report"
+        ]
+      }
+    ]
+  },
+  "workers": {
+    "researcher": {
+      "kind": "runtime"
+    },
+    "verifier": {
+      "kind": "verifier"
+    },
+    "synthesizer": {
+      "kind": "synthesizer"
+    }
+  },
+  "orchestrator": {
+    "max_card_attempts": 2
+  }
+}

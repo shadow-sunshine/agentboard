@@ -1,0 +1,13 @@
+{
+  "scenario_id": "dangling_locator_rejected",
+  "title": "悬空证据被拒绝",
+  "note": "把 pgvector 一条证据的摘录换成另一段的原文（locator 不变）：证据与原文对不上，必须抛 DanglingLocatorError。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "swap_excerpt_between_sections",
+    "candidate": "pgvector"
+  }
+}

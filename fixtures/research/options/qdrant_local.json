@@ -1,0 +1,69 @@
+{
+  "schema": "research.fixture.v1",
+  "candidate_id": "qdrant_local",
+  "display_name": "Qdrant 单机部署",
+  "snapshot_version": "qdrant-notes.2026-09-01",
+  "captured_at": "2026-09-01",
+  "source_path": "fixtures/research/options/qdrant_local.json",
+  "source_kind": "authored_summary",
+  "source_note": "P1A 阶段的快照是人工撰写的技术摘要，不是真实文档转录。结论口径只代表本快照，不代表客观事实。",
+  "sections": [
+    {
+      "section_id": "s_deploy",
+      "heading": "部署与上线",
+      "text": "提供单文件二进制与容器镜像，单机模式可直接以单进程启动，不依赖外部消息队列或对象存储，首次上线步骤较少。",
+      "tags": ["deployment"]
+    },
+    {
+      "section_id": "s_ops",
+      "heading": "运维负担",
+      "text": "单进程形态便于纳入既有容器编排体系，但存储与快照策略需要单独配置，团队需要额外了解其存储引擎的调优参数。",
+      "tags": ["operations"]
+    },
+    {
+      "section_id": "s_perf",
+      "heading": "检索性能",
+      "text": "以向量检索为核心设计，支持 HNSW 等索引，在中等规模下检索延迟表现优秀。",
+      "tags": ["performance"]
+    },
+    {
+      "section_id": "s_scale",
+      "heading": "规模上限",
+      "text": "单机模式下可承载中等规模数据；更大规模需要引入分布式部署模式，架构复杂度随之上升。",
+      "tags": ["scale"]
+    },
+    {
+      "section_id": "s_eco",
+      "heading": "生态与文档",
+      "text": "官方文档结构清晰、API 设计一致；但社区规模与周边工具数量仍处于成长阶段，第三方集成资料相对少。",
+      "tags": ["ecosystem"]
+    }
+  ],
+  "dimension_values": {
+    "deploy_complexity": {
+      "value": "low",
+      "section_id": "s_deploy",
+      "claim": "单文件二进制或容器单进程启动，不依赖外部消息队列与对象存储"
+    },
+    "ops_skill_floor": {
+      "value": "medium",
+      "section_id": "s_ops",
+      "claim": "可纳入既有容器体系，但存储与快照策略需单独配置与调优"
+    },
+    "query_latency": {
+      "value": "excellent",
+      "section_id": "s_perf",
+      "claim": "以向量检索为核心设计，中等规模下延迟表现优秀"
+    },
+    "scale_ceiling": {
+      "value": "medium",
+      "section_id": "s_scale",
+      "claim": "单机承载中等规模，更大规模需引入分布式模式"
+    },
+    "ecosystem_maturity": {
+      "value": "growing",
+      "section_id": "s_eco",
+      "claim": "文档与 API 清晰，但社区与第三方集成仍在成长阶段"
+    }
+  }
+}

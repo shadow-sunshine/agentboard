@@ -1,0 +1,16 @@
+{
+  "scenario_id": "candidate_missing_from_board",
+  "title": "候选缺失",
+  "note": "快照目录有三个候选，任务板只跑了两个：必须抛 CandidateCoverageError —— 静默丢弃会让报告看起来比实际更完整。",
+  "brief": {
+    "text": "为检索服务做技术选型",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  },
+  "candidates": [
+    "pgvector",
+    "qdrant_local"
+  ]
+}

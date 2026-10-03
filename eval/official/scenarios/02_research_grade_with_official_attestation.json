@@ -1,0 +1,14 @@
+{
+  "scenario_id": "research_grade_with_official_attestation",
+  "title": "research_grade + 正式证明",
+  "note": "正式 attestations/official.sources.v1.json + load_snapshot_set 工厂 ⇒ 通过，report_id 与默认一致。",
+  "brief": {
+    "text": "为检索服务做技术选型（依据官方文档快照）",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  },
+  "policy": "research_grade",
+  "attestation": "official"
+}

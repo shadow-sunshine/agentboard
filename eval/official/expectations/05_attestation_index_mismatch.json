@@ -1,0 +1,7 @@
+{
+  "scenario_id": "attestation_index_mismatch",
+  "expect": {
+    "mode": "domain_error",
+    "exception": "SnapshotSchemaError"
+  }
+}

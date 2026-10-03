@@ -1,0 +1,17 @@
+{
+  "scenario_id": "ma_verifier_rejects",
+  "expect": {
+    "outcome": "blocked",
+    "final_report_present": false,
+    "verdicts": {
+      "verify_report": "rejected"
+    },
+    "events_present": [
+      "verifier_rejected",
+      "task_failed"
+    ],
+    "card_status": {
+      "synthesize": "failed"
+    }
+  }
+}

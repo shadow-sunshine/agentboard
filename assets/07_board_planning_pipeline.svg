@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="450" viewBox="0 0 1300 450">
+  <rect width="1300" height="450" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 26px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .label{font:700 18px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:15px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:13px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .box{stroke:#98A2B3;stroke-width:1.4;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <text class="title" x="48" y="52">主 Agent 动态生成任务板</text>
+
+  <rect class="box" x="70" y="126" width="235" height="142" fill="#EEF4FF"/>
+  <text class="label" x="100" y="166">ProjectBrief</text>
+  <text class="small" x="100" y="200">杭州三日游团建目标</text>
+  <text class="small" x="100" y="230">只提供业务输入</text>
+
+  <rect class="box" x="410" y="92" width="260" height="210" fill="#F9F5FF"/>
+  <text class="label" x="445" y="132">模型建议</text>
+  <text class="text" x="445" y="168">title</text>
+  <text class="text" x="445" y="198">goal</text>
+  <text class="text" x="445" y="228">context</text>
+  <text class="small" x="445" y="266">负责语义拆解</text>
+
+  <rect class="box" x="772" y="92" width="260" height="210" fill="#FFF7ED"/>
+  <text class="label" x="807" y="132">代码护栏</text>
+  <text class="text" x="807" y="168">校验 agent 白名单</text>
+  <text class="text" x="807" y="198">校验 depends_on</text>
+  <text class="text" x="807" y="228">补执行边界</text>
+  <text class="small" x="807" y="266">负责可执行约束</text>
+
+  <rect class="box" x="1130" y="126" width="120" height="142" fill="#F0FDF4"/>
+  <text class="label" x="1157" y="166">任务板</text>
+  <text class="small" x="1153" y="200">2-6 张卡</text>
+  <text class="small" x="1153" y="230">可跟踪</text>
+
+  <path class="line" d="M305 198 C350 198 366 198 410 198"/>
+  <path class="line" d="M670 198 C714 198 728 198 772 198"/>
+  <path class="line" d="M1032 198 C1074 198 1088 198 1130 198"/>
+
+  <rect x="70" y="342" width="1180" height="54" fill="#F2F4F7" stroke="#D0D5DD" rx="10" ry="10"/>
+  <text class="text" x="98" y="374">主 Agent 负责真实拆解；代码只拒绝越界、缺依赖、成环和没有协作边的任务板。</text>
+</svg>

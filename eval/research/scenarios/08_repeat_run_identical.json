@@ -1,0 +1,12 @@
+{
+  "scenario_id": "repeat_run_identical",
+  "title": "重复运行一致性",
+  "note": "换一个 brief 文本（因此 report_id 与场景 1 不同），专门断言「同一输入两次组装得到逐字节相同的报告」。",
+  "brief": {
+    "text": "为检索服务做技术选型（复跑锚点）",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  }
+}

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="540" viewBox="0 0 1400 540">
+  <rect width="1400" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 27px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .label{font:700 18px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:15px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:14px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .code{font:700 14px Menlo,Consolas,monospace;fill:#1D2939}
+      .box{stroke:#98A2B3;stroke-width:1.5;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <text class="title" x="58" y="54">ACP 连接本地 Codex：主 Agent 只需要面对标准会话</text>
+
+  <rect class="box" x="70" y="120" width="270" height="160" fill="#EEF4FF"/>
+  <text class="label" x="104" y="160">Notebook / 主 Agent</text>
+  <text class="text" x="104" y="194">构造任务文本</text>
+  <text class="text" x="104" y="224">收集 session/update</text>
+  <text class="text" x="104" y="254">决定是否继续调度</text>
+
+  <rect class="box" x="430" y="120" width="275" height="160" fill="#F0FDF4"/>
+  <text class="label" x="464" y="160">ACP Client</text>
+  <text class="code" x="464" y="194">initialize()</text>
+  <text class="code" x="464" y="224">new_session()</text>
+  <text class="code" x="464" y="254">prompt(session_id)</text>
+
+  <rect class="box" x="795" y="120" width="275" height="160" fill="#FFF7ED"/>
+  <text class="label" x="829" y="160">Codex ACP Adapter</text>
+  <text class="code" x="829" y="194">npx -y</text>
+  <text class="code" x="829" y="224">@agentclientprotocol/</text>
+  <text class="code" x="829" y="250">codex-acp@1.1.0</text>
+
+  <rect class="box" x="1155" y="120" width="180" height="160" fill="#FDF2FA"/>
+  <text class="label" x="1190" y="160">本地 Codex</text>
+  <text class="text" x="1190" y="194">认证</text>
+  <text class="text" x="1190" y="224">模型请求</text>
+  <text class="text" x="1190" y="254">工具事件</text>
+
+  <path class="line" d="M340 200 L430 200"/>
+  <path class="line" d="M705 200 L795 200"/>
+  <path class="line" d="M1070 200 L1155 200"/>
+  <text class="small" x="360" y="185">任务文本</text>
+  <text class="small" x="728" y="185">JSON-RPC over stdio</text>
+  <text class="small" x="1088" y="185">运行时调用</text>
+
+  <path class="line" d="M1155 340 L1070 340"/>
+  <path class="line" d="M795 340 L705 340"/>
+  <path class="line" d="M430 340 L340 340"/>
+  <text class="small" x="1082" y="324">结果与事件</text>
+  <text class="small" x="724" y="324">session/update</text>
+  <text class="small" x="358" y="324">公开文本</text>
+
+  <rect class="box" x="70" y="408" width="1265" height="76" fill="#F2F4F7"/>
+  <text class="text" x="104" y="438">ACP 解决的是连接形状：握手、会话、prompt turn、流式 update、权限请求。</text>
+  <text class="text" x="104" y="466">任务拆解、上下文裁剪、依赖推进、失败重试和最终综合仍然属于主 Agent 的 Harness 责任。</text>
+</svg>

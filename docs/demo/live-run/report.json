@@ -1,0 +1,673 @@
+{
+  "failure_reason": "",
+  "final_report": {
+    "final_report_id": "mafr_d695c4dcdd76545b",
+    "schema": "multi_agent.final.v1",
+    "synthesis": "最终报告（仅汇总验证通过的结论）：verify_report → rp_4b666803a174656e (passed)",
+    "task_refs": [
+      "verify_report"
+    ],
+    "verdicts": {
+      "verify_report": "passed"
+    }
+  },
+  "mode": "live",
+  "outcome": "completed",
+  "run_id": "ma_ccab32b3023b1c7e",
+  "selection_reports": [
+    {
+      "brief": {
+        "source": "orchestrator/research_candidates",
+        "text": "基于显式来源计划研究候选方案"
+      },
+      "candidate_ids": [
+        "pgvector",
+        "qdrant_local"
+      ],
+      "coverage": {
+        "candidates": [
+          {
+            "candidate_id": "pgvector",
+            "evidence_by_source_type": {
+              "fixture_snapshot": 5
+            },
+            "finding_ids": [
+              "rf_11574b98da94f734",
+              "rf_678b7c3c48856bf6",
+              "rf_89502e263b1430bf",
+              "rf_9301c44d2ed4ac48",
+              "rf_c4ca7982de820906",
+              "rf_e59f452cd2c5df73"
+            ],
+            "missing_dimensions": [
+              "query_latency"
+            ],
+            "supported_dimensions": 5,
+            "total_dimensions": 6,
+            "trusted_finding_ids": [
+              "rf_11574b98da94f734",
+              "rf_89502e263b1430bf",
+              "rf_9301c44d2ed4ac48",
+              "rf_c4ca7982de820906",
+              "rf_e59f452cd2c5df73"
+            ]
+          },
+          {
+            "candidate_id": "qdrant_local",
+            "evidence_by_source_type": {
+              "fixture_snapshot": 4
+            },
+            "finding_ids": [
+              "rf_062b505a91adf105",
+              "rf_078d9375e22b0824",
+              "rf_1526dc6cf93a110e",
+              "rf_66f6904e7a0e2abf",
+              "rf_6fc415233be0b208",
+              "rf_b2744b0981c76d16"
+            ],
+            "missing_dimensions": [
+              "query_latency",
+              "scale_ceiling"
+            ],
+            "supported_dimensions": 4,
+            "total_dimensions": 6,
+            "trusted_finding_ids": [
+              "rf_062b505a91adf105",
+              "rf_078d9375e22b0824",
+              "rf_66f6904e7a0e2abf",
+              "rf_6fc415233be0b208"
+            ]
+          }
+        ]
+      },
+      "dimensions": [
+        {
+          "aliases": [
+            "deploy_complexity"
+          ],
+          "description": "从零到可用需要多少步骤与额外组件；越低越省事。",
+          "dimension_id": "deployment_complexity",
+          "name": "部署与上线复杂度",
+          "scale_kind": "ordinal",
+          "scale_labels": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "utility_map": {
+            "high": 0.0,
+            "low": 1.0,
+            "medium": 0.5
+          },
+          "weight": 0.2
+        },
+        {
+          "aliases": [],
+          "description": "文档质量、社区规模与周边工具完备程度；越成熟越好。",
+          "dimension_id": "ecosystem_maturity",
+          "name": "生态与文档成熟度",
+          "scale_kind": "ordinal",
+          "scale_labels": [
+            "nascent",
+            "growing",
+            "mature"
+          ],
+          "utility_map": {
+            "growing": 0.5,
+            "mature": 1.0,
+            "nascent": 0.0
+          },
+          "weight": 0.15
+        },
+        {
+          "aliases": [],
+          "description": "是否需要引入外部托管服务；false 表示可完全自托管，对内网部署更友好。",
+          "dimension_id": "managed_service_needed",
+          "name": "是否依赖外部托管服务",
+          "scale_kind": "boolean",
+          "scale_labels": [
+            "false",
+            "true"
+          ],
+          "utility_map": {
+            "false": 1.0,
+            "true": 0.0
+          },
+          "weight": 0.1
+        },
+        {
+          "aliases": [
+            "ops_effort"
+          ],
+          "description": "日常运维对团队既有技能栈的额外要求；越低越容易维持。",
+          "dimension_id": "ops_skill_floor",
+          "name": "运维技能门槛",
+          "scale_kind": "ordinal",
+          "scale_labels": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "utility_map": {
+            "high": 0.0,
+            "low": 1.0,
+            "medium": 0.5
+          },
+          "weight": 0.15
+        },
+        {
+          "aliases": [],
+          "description": "在预期数据规模下的检索延迟水平；越高越好。",
+          "dimension_id": "query_latency",
+          "name": "检索延迟表现",
+          "scale_kind": "ordinal",
+          "scale_labels": [
+            "excellent",
+            "good",
+            "fair"
+          ],
+          "utility_map": {
+            "excellent": 1.0,
+            "fair": 0.0,
+            "good": 0.5
+          },
+          "weight": 0.25
+        },
+        {
+          "aliases": [],
+          "description": "可承载的数据量级与横向扩展能力；越大越好。",
+          "dimension_id": "scale_ceiling",
+          "name": "规模上限",
+          "scale_kind": "ordinal",
+          "scale_labels": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "utility_map": {
+            "large": 1.0,
+            "medium": 0.5,
+            "small": 0.0
+          },
+          "weight": 0.15
+        }
+      ],
+      "evidence_index": {
+        "ev_74f5cef5ba2ee619": {
+          "captured_at": "2026-09-26",
+          "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+          "evidence_id": "ev_74f5cef5ba2ee619",
+          "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+          "locator": "/sections/0/text",
+          "snapshot_version": "pgvector.live.2026-09-26",
+          "source_id": "fixture:pgvector",
+          "source_type": "fixture_snapshot"
+        },
+        "ev_90490d1e28192e2a": {
+          "captured_at": "2026-09-26",
+          "digest": "0926a191ff1b9672d8d89ac4512caec7c0d9165072f92a3d0b1dc60211a7d5db",
+          "evidence_id": "ev_90490d1e28192e2a",
+          "excerpt": "<p align=\"center\">\n  <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg\">\n      <img height=\"100\" alt=\"Qdrant\" src=\"https://github.com/qdrant/qdrant/raw/master/docs/logo.svg\">\n  </picture>\n</p>",
+          "locator": "/sections/0/text",
+          "snapshot_version": "qdrant_local.live.2026-09-26",
+          "source_id": "fixture:qdrant_local",
+          "source_type": "fixture_snapshot"
+        }
+      },
+      "findings": [
+        {
+          "agent_name": "research",
+          "candidate_id": "pgvector",
+          "claim": "pgvector installation requires compiling from source or using package managers, with platform-specific steps and tuning options for indexes.",
+          "confidence": 1.0,
+          "dimension_id": "deployment_complexity",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+              "evidence_id": "ev_74f5cef5ba2ee619",
+              "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+              "locator": "/sections/0/text",
+              "snapshot_version": "pgvector.live.2026-09-26",
+              "source_id": "fixture:pgvector",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_11574b98da94f734",
+          "status": "supported",
+          "task_id": "research__pgvector",
+          "value": "medium"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "pgvector",
+          "claim": "pgvector has broad, production-ready support across PostgreSQL versions, multiple installation methods, extensive language bindings, and active maintenance with documented scaling, monitoring, and troubleshooting.",
+          "confidence": 1.0,
+          "dimension_id": "ecosystem_maturity",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+              "evidence_id": "ev_74f5cef5ba2ee619",
+              "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+              "locator": "/sections/0/text",
+              "snapshot_version": "pgvector.live.2026-09-26",
+              "source_id": "fixture:pgvector",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_9301c44d2ed4ac48",
+          "status": "supported",
+          "task_id": "research__pgvector",
+          "value": "mature"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "pgvector",
+          "claim": "pgvector is a PostgreSQL extension that users install and manage themselves; it does not require or imply a managed service.",
+          "confidence": 1.0,
+          "dimension_id": "managed_service_needed",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+              "evidence_id": "ev_74f5cef5ba2ee619",
+              "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+              "locator": "/sections/0/text",
+              "snapshot_version": "pgvector.live.2026-09-26",
+              "source_id": "fixture:pgvector",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_c4ca7982de820906",
+          "status": "supported",
+          "task_id": "research__pgvector",
+          "value": "false"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "pgvector",
+          "claim": "pgvector provides robust, production-ready vector search operations with ACID compliance, multiple indexing strategies (HNSW/IVFFlat), and extensive tuning knobs for operational control.",
+          "confidence": 1.0,
+          "dimension_id": "ops_skill_floor",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+              "evidence_id": "ev_74f5cef5ba2ee619",
+              "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+              "locator": "/sections/0/text",
+              "snapshot_version": "pgvector.live.2026-09-26",
+              "source_id": "fixture:pgvector",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_89502e263b1430bf",
+          "status": "supported",
+          "task_id": "research__pgvector",
+          "value": "high"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "pgvector",
+          "claim": "资料快照未覆盖维度「检索延迟表现」，无法给出依据",
+          "confidence": 0.0,
+          "dimension_id": "query_latency",
+          "evidence_refs": [],
+          "finding_id": "rf_678b7c3c48856bf6",
+          "status": "unsupported",
+          "task_id": "research__pgvector",
+          "value": "unknown"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "pgvector",
+          "claim": "pgvector supports up to 64,000 dimensions via binary vectors and 16,000 dimensions for vector/halfvec/sparsevec types.",
+          "confidence": 1.0,
+          "dimension_id": "scale_ceiling",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+              "evidence_id": "ev_74f5cef5ba2ee619",
+              "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+              "locator": "/sections/0/text",
+              "snapshot_version": "pgvector.live.2026-09-26",
+              "source_id": "fixture:pgvector",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_e59f452cd2c5df73",
+          "status": "supported",
+          "task_id": "research__pgvector",
+          "value": "large"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "qdrant_local",
+          "claim": "Qdrant can be deployed locally with a single Docker command, requiring minimal setup for basic use.",
+          "confidence": 1.0,
+          "dimension_id": "deployment_complexity",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "0926a191ff1b9672d8d89ac4512caec7c0d9165072f92a3d0b1dc60211a7d5db",
+              "evidence_id": "ev_90490d1e28192e2a",
+              "excerpt": "<p align=\"center\">\n  <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg\">\n      <img height=\"100\" alt=\"Qdrant\" src=\"https://github.com/qdrant/qdrant/raw/master/docs/logo.svg\">\n  </picture>\n</p>",
+              "locator": "/sections/0/text",
+              "snapshot_version": "qdrant_local.live.2026-09-26",
+              "source_id": "fixture:qdrant_local",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_078d9375e22b0824",
+          "status": "supported",
+          "task_id": "research__qdrant_local",
+          "value": "low"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "qdrant_local",
+          "claim": "Qdrant has official and community client libraries for multiple languages, extensive documentation, integrations, cloud offering, active Discord, and a clear 2025 roadmap.",
+          "confidence": 1.0,
+          "dimension_id": "ecosystem_maturity",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "0926a191ff1b9672d8d89ac4512caec7c0d9165072f92a3d0b1dc60211a7d5db",
+              "evidence_id": "ev_90490d1e28192e2a",
+              "excerpt": "<p align=\"center\">\n  <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg\">\n      <img height=\"100\" alt=\"Qdrant\" src=\"https://github.com/qdrant/qdrant/raw/master/docs/logo.svg\">\n  </picture>\n</p>",
+              "locator": "/sections/0/text",
+              "snapshot_version": "qdrant_local.live.2026-09-26",
+              "source_id": "fixture:qdrant_local",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_66f6904e7a0e2abf",
+          "status": "supported",
+          "task_id": "research__qdrant_local",
+          "value": "mature"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "qdrant_local",
+          "claim": "Qdrant can be run locally via Docker without requiring a managed service.",
+          "confidence": 1.0,
+          "dimension_id": "managed_service_needed",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "0926a191ff1b9672d8d89ac4512caec7c0d9165072f92a3d0b1dc60211a7d5db",
+              "evidence_id": "ev_90490d1e28192e2a",
+              "excerpt": "<p align=\"center\">\n  <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg\">\n      <img height=\"100\" alt=\"Qdrant\" src=\"https://github.com/qdrant/qdrant/raw/master/docs/logo.svg\">\n  </picture>\n</p>",
+              "locator": "/sections/0/text",
+              "snapshot_version": "qdrant_local.live.2026-09-26",
+              "source_id": "fixture:qdrant_local",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_062b505a91adf105",
+          "status": "supported",
+          "task_id": "research__qdrant_local",
+          "value": "false"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "qdrant_local",
+          "claim": "Qdrant is written in Rust, supports distributed deployment, sharding, replication, zero-downtime updates, observability, and production-grade security guidance.",
+          "confidence": 1.0,
+          "dimension_id": "ops_skill_floor",
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "0926a191ff1b9672d8d89ac4512caec7c0d9165072f92a3d0b1dc60211a7d5db",
+              "evidence_id": "ev_90490d1e28192e2a",
+              "excerpt": "<p align=\"center\">\n  <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg\">\n      <img height=\"100\" alt=\"Qdrant\" src=\"https://github.com/qdrant/qdrant/raw/master/docs/logo.svg\">\n  </picture>\n</p>",
+              "locator": "/sections/0/text",
+              "snapshot_version": "qdrant_local.live.2026-09-26",
+              "source_id": "fixture:qdrant_local",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "finding_id": "rf_6fc415233be0b208",
+          "status": "supported",
+          "task_id": "research__qdrant_local",
+          "value": "high"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "qdrant_local",
+          "claim": "资料快照未覆盖维度「检索延迟表现」，无法给出依据",
+          "confidence": 0.0,
+          "dimension_id": "query_latency",
+          "evidence_refs": [],
+          "finding_id": "rf_b2744b0981c76d16",
+          "status": "unsupported",
+          "task_id": "research__qdrant_local",
+          "value": "unknown"
+        },
+        {
+          "agent_name": "research",
+          "candidate_id": "qdrant_local",
+          "claim": "资料快照未覆盖维度「规模上限」，无法给出依据",
+          "confidence": 0.0,
+          "dimension_id": "scale_ceiling",
+          "evidence_refs": [],
+          "finding_id": "rf_1526dc6cf93a110e",
+          "status": "unsupported",
+          "task_id": "research__qdrant_local",
+          "value": "unknown"
+        }
+      ],
+      "generated_by": "deterministic-assembler.p1a.1",
+      "integrity": {
+        "checks": [
+          {
+            "code": "I1",
+            "detail": "2 个 evidence_id 各自对应唯一内容",
+            "passed": true
+          },
+          {
+            "code": "I2",
+            "detail": "2 条索引项全部可解析",
+            "passed": true
+          },
+          {
+            "code": "I3",
+            "detail": "所有 supported finding 都有非 legacy 证据",
+            "passed": true
+          },
+          {
+            "code": "I4",
+            "detail": "每个候选都有 fixture 证据支撑",
+            "passed": true
+          },
+          {
+            "code": "I5",
+            "detail": "2 × 6 组合完整覆盖",
+            "passed": true
+          },
+          {
+            "code": "I6",
+            "detail": "2 条推荐的 rank 与 score 单调一致",
+            "passed": true
+          },
+          {
+            "code": "I7",
+            "detail": "推荐引用的 finding / risk 全部可解析",
+            "passed": true
+          },
+          {
+            "code": "I8",
+            "detail": "维度权重之和为 1.0",
+            "passed": true
+          },
+          {
+            "code": "I9",
+            "detail": "证据来源类型：['fixture_snapshot']",
+            "passed": true
+          }
+        ],
+        "failed_codes": [],
+        "passed": true
+      },
+      "recommendations": [
+        {
+          "candidate_id": "pgvector",
+          "confidence": 0.8333333333333334,
+          "counter_finding_ids": [],
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "f3c4b25059733644e79adad10237143af1f44bf600184d576d6d0a87e03e5b1c",
+              "evidence_id": "ev_74f5cef5ba2ee619",
+              "excerpt": "# pgvector\n\nOpen-source vector similarity search for Postgres\n\nStore your vectors with the rest of your data. Supports:\n\n- exact and approximate nearest neighbor search\n- single-precision, half-precision, binary, and sparse vectors\n- L2 distance, inner product, cosine distance, L1 distance, Hamming distance, and Jaccard distance\n- any [language](#languages) with a Postgres client\n\nPlus [ACID](http",
+              "locator": "/sections/0/text",
+              "snapshot_version": "pgvector.live.2026-09-26",
+              "source_id": "fixture:pgvector",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "matched_dimensions": [
+            "deployment_complexity",
+            "ecosystem_maturity",
+            "managed_service_needed",
+            "ops_skill_floor",
+            "scale_ceiling"
+          ],
+          "missing_dimensions": [
+            "query_latency"
+          ],
+          "rank": 1,
+          "rationale": "pgvector：综合效用 0.500（排名 1）；达标维度 5/6；可信证据支撑 5 条；缺失维度：query_latency",
+          "risk_ids": [
+            "rk_01939235bf9e5032",
+            "rk_65a139a1437d4ca7"
+          ],
+          "score": 0.5,
+          "supporting_finding_ids": [
+            "rf_11574b98da94f734",
+            "rf_89502e263b1430bf",
+            "rf_9301c44d2ed4ac48",
+            "rf_c4ca7982de820906",
+            "rf_e59f452cd2c5df73"
+          ]
+        },
+        {
+          "candidate_id": "qdrant_local",
+          "confidence": 0.6666666666666666,
+          "counter_finding_ids": [],
+          "evidence_refs": [
+            {
+              "captured_at": "2026-09-26",
+              "digest": "0926a191ff1b9672d8d89ac4512caec7c0d9165072f92a3d0b1dc60211a7d5db",
+              "evidence_id": "ev_90490d1e28192e2a",
+              "excerpt": "<p align=\"center\">\n  <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-dark.svg\">\n      <source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/qdrant/qdrant/raw/master/docs/logo-light.svg\">\n      <img height=\"100\" alt=\"Qdrant\" src=\"https://github.com/qdrant/qdrant/raw/master/docs/logo.svg\">\n  </picture>\n</p>",
+              "locator": "/sections/0/text",
+              "snapshot_version": "qdrant_local.live.2026-09-26",
+              "source_id": "fixture:qdrant_local",
+              "source_type": "fixture_snapshot"
+            }
+          ],
+          "matched_dimensions": [
+            "deployment_complexity",
+            "ecosystem_maturity",
+            "managed_service_needed",
+            "ops_skill_floor"
+          ],
+          "missing_dimensions": [
+            "query_latency",
+            "scale_ceiling"
+          ],
+          "rank": 2,
+          "rationale": "qdrant_local：综合效用 0.450（排名 2）；达标维度 4/6；可信证据支撑 4 条；缺失维度：query_latency, scale_ceiling",
+          "risk_ids": [
+            "rk_03eb33a7b53a4ecc",
+            "rk_2ee188b048da1139",
+            "rk_3d93c0729d612ddc"
+          ],
+          "score": 0.45,
+          "supporting_finding_ids": [
+            "rf_062b505a91adf105",
+            "rf_078d9375e22b0824",
+            "rf_66f6904e7a0e2abf",
+            "rf_6fc415233be0b208"
+          ]
+        }
+      ],
+      "report_id": "rp_4b666803a174656e",
+      "risks": [
+        {
+          "candidate_id": "pgvector",
+          "description": "pgvector 在权重 0.25 的维度 query_latency 上没有资料依据",
+          "dimension_id": "query_latency",
+          "evidence_refs": [],
+          "mitigation": "补充该维度的资料快照后再比较，或调低该维度权重",
+          "origin": "rule_based",
+          "risk_id": "rk_01939235bf9e5032",
+          "rule_id": "R_UNSUPPORTED_WEIGHTED",
+          "severity": "high"
+        },
+        {
+          "candidate_id": "qdrant_local",
+          "description": "qdrant_local 在权重 0.15 的维度 scale_ceiling 上没有资料依据",
+          "dimension_id": "scale_ceiling",
+          "evidence_refs": [],
+          "mitigation": "补充该维度的资料快照后再比较，或调低该维度权重",
+          "origin": "rule_based",
+          "risk_id": "rk_03eb33a7b53a4ecc",
+          "rule_id": "R_UNSUPPORTED_WEIGHTED",
+          "severity": "high"
+        },
+        {
+          "candidate_id": "qdrant_local",
+          "description": "qdrant_local 在权重 0.25 的维度 query_latency 上没有资料依据",
+          "dimension_id": "query_latency",
+          "evidence_refs": [],
+          "mitigation": "补充该维度的资料快照后再比较，或调低该维度权重",
+          "origin": "rule_based",
+          "risk_id": "rk_3d93c0729d612ddc",
+          "rule_id": "R_UNSUPPORTED_WEIGHTED",
+          "severity": "high"
+        },
+        {
+          "candidate_id": "",
+          "description": "前两名综合效用分差仅 0.0500（阈值 0.05），排名不稳健",
+          "dimension_id": "",
+          "evidence_refs": [],
+          "mitigation": "补充资料或调整维度权重后再确认结论",
+          "origin": "rule_based",
+          "risk_id": "rk_28d2d57c8f42c2fa",
+          "rule_id": "R_SCORE_GAP_TIGHT",
+          "severity": "medium"
+        },
+        {
+          "candidate_id": "qdrant_local",
+          "description": "qdrant_local 的 4 条结论全部出自同一段原文（/sections/0/text），结论独立性不足",
+          "dimension_id": "",
+          "evidence_refs": [],
+          "mitigation": "补充不同章节的资料依据，避免单点来源",
+          "origin": "rule_based",
+          "risk_id": "rk_2ee188b048da1139",
+          "rule_id": "R_SINGLE_SOURCE",
+          "severity": "medium"
+        },
+        {
+          "candidate_id": "pgvector",
+          "description": "pgvector 的 5 条结论全部出自同一段原文（/sections/0/text），结论独立性不足",
+          "dimension_id": "",
+          "evidence_refs": [],
+          "mitigation": "补充不同章节的资料依据，避免单点来源",
+          "origin": "rule_based",
+          "risk_id": "rk_65a139a1437d4ca7",
+          "rule_id": "R_SINGLE_SOURCE",
+          "severity": "medium"
+        }
+      ],
+      "schema_version": "p1a.1"
+    }
+  ],
+  "verdicts": {
+    "verify_report": "passed"
+  }
+}

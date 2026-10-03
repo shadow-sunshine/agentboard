@@ -1,0 +1,25 @@
+{
+  "scenario_id": "no_results",
+  "title": "全部查询零结果",
+  "note": "所有步骤（含缺口补检）零结果 ⇒ outcome=failed、原因 no_snapshots、无报告（不崩溃）。",
+  "brief": {
+    "text": "live-research MVP 端到端评测",
+    "source": "docs/research/selection_goal.md"
+  },
+  "candidates": [
+    "pgvector",
+    "qdrant_local"
+  ],
+  "gap_recheck": true,
+  "budget": {
+    "max_steps": 64,
+    "max_provider_requests": 64,
+    "max_total_content_chars": 100000,
+    "max_retries_per_step": 1
+  },
+  "provider": {
+    "documents": {},
+    "failures": {}
+  },
+  "decisions": {}
+}

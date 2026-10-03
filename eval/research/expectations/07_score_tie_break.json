@@ -1,0 +1,46 @@
+{
+  "scenario_id": "score_tie_break",
+  "expect": {
+    "mode": "report",
+    "strict": true,
+    "report_id": "rp_d1d34eca14d9c829",
+    "integrity_passed": true,
+    "failed_codes": [],
+    "ranking": [
+      {
+        "rank": 1,
+        "candidate_id": "pgvector",
+        "score": 0.8
+      },
+      {
+        "rank": 2,
+        "candidate_id": "qdrant_local",
+        "score": 0.8
+      },
+      {
+        "rank": 3,
+        "candidate_id": "milvus_standalone",
+        "score": 0.5
+      }
+    ],
+    "unsupported": {
+      "milvus_standalone": [
+        "scale_ceiling"
+      ]
+    },
+    "risk_rule_ids": [
+      "R_SCORE_GAP_TIGHT",
+      "R_UNSUPPORTED_WEIGHTED"
+    ],
+    "coverage_supported": {
+      "milvus_standalone": 5,
+      "pgvector": 6,
+      "qdrant_local": 6
+    },
+    "trusted_finding_counts": {
+      "milvus_standalone": 5,
+      "pgvector": 6,
+      "qdrant_local": 6
+    }
+  }
+}

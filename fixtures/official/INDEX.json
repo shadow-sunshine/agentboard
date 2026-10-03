@@ -1,0 +1,34 @@
+{
+  "schema": "research.index.v1",
+  "dimension_registry": "dimensions/dimensions.v1.json",
+  "dimension_registry_sha256": "083a165e3ce7f0a622113ee85961ab576eb84489a99a5c678440cf13dd785a70",
+  "note": "官方文档资料快照（与 fixtures/research 的 P1A 人工摘要分开存放，互不覆盖）。维度注册表与 P1A 基线逐字节一致：沿用既有维度定义与权重。每个快照的 provenance 块记录来源 URL、仓库路径、ref / commit / blob、原始文件 sha256、摘举行号，以及无法从资料确认的维度。",
+  "snapshot_set": "official.2026-09-23",
+  "provenance_schema": "research.sources.v1",
+  "candidates": [
+    {
+      "candidate_id": "milvus_standalone",
+      "display_name": "Milvus Standalone",
+      "fixture_path": "sources/milvus_standalone.json",
+      "snapshot_version": "milvus_standalone.official.2026-09-23",
+      "captured_at": "2026-09-23",
+      "fixture_sha256": "5a9cc41490ab9c4ce9798b896a97812c25126417de11601b3874d04528ddd34e"
+    },
+    {
+      "candidate_id": "pgvector",
+      "display_name": "pgvector + PostgreSQL",
+      "fixture_path": "sources/pgvector.json",
+      "snapshot_version": "pgvector.official.2026-09-23",
+      "captured_at": "2026-09-23",
+      "fixture_sha256": "84765591a09c584a86d2c2b5afb5d9d738c535727ec55dfb13d16e5b275cb987"
+    },
+    {
+      "candidate_id": "qdrant_local",
+      "display_name": "Qdrant self-hosted single-node",
+      "fixture_path": "sources/qdrant_local.json",
+      "snapshot_version": "qdrant_local.official.2026-09-23",
+      "captured_at": "2026-09-23",
+      "fixture_sha256": "9f48ba45192f96d0622b5326ce377e607f2561d7fd3479ae00a7340d165ce013"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "scenario_id": "ma_config_change",
+  "expect": {
+    "outcome": "completed",
+    "final_report_present": true,
+    "run_id_differs_from": "ma_normal_collaboration"
+  }
+}

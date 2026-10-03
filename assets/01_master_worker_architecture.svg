@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="720" viewBox="0 0 1500 720">
+  <rect width="1500" height="720" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#344054"/>
+    </marker>
+    <style>
+      .title{font:700 28px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .label{font:700 19px Arial,"Noto Sans CJK SC",sans-serif;fill:#182230}
+      .text{font:16px Arial,"Noto Sans CJK SC",sans-serif;fill:#344054}
+      .small{font:14px Arial,"Noto Sans CJK SC",sans-serif;fill:#475467}
+      .box{stroke:#98A2B3;stroke-width:1.5;rx:10;ry:10}
+      .line{stroke:#344054;stroke-width:2.3;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#667085;stroke-width:2;stroke-dasharray:8 8;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <text class="title" x="60" y="56">主 Agent 调度多 Agent 的责任边界</text>
+
+  <rect class="box" x="60" y="130" width="280" height="128" fill="#EEF4FF"/>
+  <text class="label" x="92" y="170">业务目标</text>
+  <text class="text" x="92" y="204">杭州三日游团建规划</text>
+  <text class="small" x="92" y="232">只作为原始输入进入主 Agent</text>
+
+  <rect class="box" x="480" y="96" width="390" height="168" fill="#F0FDF4"/>
+  <text class="label" x="515" y="138">Agently 主 Agent</text>
+  <text class="text" x="515" y="174">理解目标，生成任务板</text>
+  <text class="text" x="515" y="204">决定派发顺序、验收口径</text>
+  <text class="small" x="515" y="236">不把完整主会话直接转发给子 Agent</text>
+
+  <rect class="box" x="480" y="378" width="390" height="178" fill="#FFF7ED"/>
+  <text class="label" x="515" y="420">公共任务板</text>
+  <text class="text" x="515" y="456">TaskCard: status / deps / result</text>
+  <text class="text" x="515" y="486">保存全局状态与完成证据</text>
+  <text class="small" x="515" y="520">只有主 Agent 和 TriggerFlow 看到全局视图</text>
+
+  <rect class="box" x="1090" y="100" width="330" height="140" fill="#F9F5FF"/>
+  <text class="label" x="1122" y="140">Codex Research</text>
+  <text class="text" x="1122" y="174">收到私有任务包</text>
+  <text class="small" x="1122" y="206">事实核对、缺口整理、复核</text>
+
+  <rect class="box" x="1090" y="382" width="330" height="140" fill="#FDF2FA"/>
+  <text class="label" x="1122" y="422">Codex Plan</text>
+  <text class="text" x="1122" y="456">收到私有任务包</text>
+  <text class="small" x="1122" y="488">局部方案生成和文字组织</text>
+
+  <path class="line" d="M340 194 C398 194 420 180 480 180"/>
+  <path class="line" d="M675 264 L675 378"/>
+  <path class="dash" d="M870 432 C960 360 1000 176 1090 170"/>
+  <path class="dash" d="M870 470 C960 505 1000 456 1090 452"/>
+  <path class="line" d="M1090 210 C1012 260 960 392 870 458"/>
+  <path class="line" d="M1090 492 C990 560 944 540 870 500"/>
+
+  <text class="small" x="930" y="146">WorkerTaskInput</text>
+  <text class="small" x="928" y="592">WorkerResult + session_id</text>
+
+  <rect x="70" y="626" width="1360" height="62" fill="#F2F4F7" stroke="#D0D5DD" rx="10" ry="10"/>
+  <text class="text" x="96" y="654">共享的是公共任务状态和结果摘要。</text>
+  <text class="text" x="96" y="678">私有执行域只接收当前任务所需的 goal、context 和 upstream_results。</text>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "scenario_id": "evidence_resolves_to_documents",
+  "title": "证据回溯到来源文档",
+  "note": "research_grade + 正式证明：每条 fixture 证据都能 resolve_evidence 回 SourceDocument。",
+  "brief": {
+    "text": "为检索服务做技术选型（依据官方文档快照）",
+    "source": "docs/research/selection_goal.md"
+  },
+  "mutation": {
+    "kind": "none"
+  },
+  "policy": "research_grade",
+  "attestation": "official"
+}
